@@ -169,10 +169,7 @@ const WhyUs = () => {
             Why{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#799dfe',
               }}
             >
               Vulhunt
