@@ -120,15 +120,8 @@ const Navbar = () => {
               <h1
                 className="text-2xl sm:text-3xl font-bold"
                 style={{
-                  background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                  background: '-webkit-linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  textFillColor: 'transparent',
+                  color: '#799dfe',
                   fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                  WebkitFontSmoothing: 'antialiased',
-                  MozOsxFontSmoothing: 'grayscale',
                 }}
               >
                 Vulhunt
