@@ -192,7 +192,10 @@ export default function AboutUsPage() {
                 background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                MozTextFillColor: 'transparent',
                 backgroundClip: 'text',
+                color: 'transparent',
               }}
             >
               Vulhunt
@@ -226,7 +229,10 @@ export default function AboutUsPage() {
                   background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Company Overview
@@ -293,7 +299,10 @@ export default function AboutUsPage() {
                   background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Our Journey
@@ -380,7 +389,10 @@ export default function AboutUsPage() {
                   background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Our Team & Community
@@ -439,7 +451,10 @@ export default function AboutUsPage() {
                     background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
+                    MozBackgroundClip: 'text',
+                    MozTextFillColor: 'transparent',
                     backgroundClip: 'text',
+                    color: 'transparent',
                     fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                   }}
                 >
@@ -495,7 +510,10 @@ export default function AboutUsPage() {
                     background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
+                    MozBackgroundClip: 'text',
+                    MozTextFillColor: 'transparent',
                     backgroundClip: 'text',
+                    color: 'transparent',
                     fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                   }}
                 >
@@ -532,7 +550,10 @@ export default function AboutUsPage() {
                   background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Partners
@@ -605,7 +626,10 @@ export default function AboutUsPage() {
                           background: partner.gradient,
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
+                          MozBackgroundClip: 'text',
+                          MozTextFillColor: 'transparent',
                           backgroundClip: 'text',
+                          color: 'transparent',
                           fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                         }}
                       >
@@ -661,7 +685,10 @@ export default function AboutUsPage() {
                   background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Securing the Future

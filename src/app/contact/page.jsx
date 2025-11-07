@@ -169,10 +169,7 @@ export default function ContactPage() {
           >
             <span
               style={{
-                background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#799dfe',
               }}
             >
               Contact Us
@@ -217,10 +214,7 @@ export default function ContactPage() {
                   <h3
                     className="text-2xl sm:text-3xl font-bold mb-8"
                     style={{
-                      background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      color: '#799dfe',
                       fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                     }}
                   >
@@ -437,10 +431,7 @@ export default function ContactPage() {
                   <h3
                     className="text-2xl sm:text-3xl font-bold mb-8"
                     style={{
-                      background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      color: '#8722ec',
                       fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                     }}
                   >

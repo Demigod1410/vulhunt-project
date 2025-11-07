@@ -153,7 +153,10 @@ export default function ServicesPage() {
                 background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
+                MozBackgroundClip: 'text',
+                MozTextFillColor: 'transparent',
                 backgroundClip: 'text',
+                color: 'transparent',
               }}
             >
               Services
@@ -189,7 +192,10 @@ export default function ServicesPage() {
                   background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Crowdsourced Cybersecurity Services
@@ -248,7 +254,10 @@ export default function ServicesPage() {
                         background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        MozBackgroundClip: 'text',
+                        MozTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
@@ -342,7 +351,10 @@ export default function ServicesPage() {
                         background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        MozBackgroundClip: 'text',
+                        MozTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
@@ -398,7 +410,10 @@ export default function ServicesPage() {
                   background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Traditional Cybersecurity Services
@@ -456,7 +471,10 @@ export default function ServicesPage() {
                         background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        MozBackgroundClip: 'text',
+                        MozTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
@@ -521,7 +539,10 @@ export default function ServicesPage() {
                         background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        MozBackgroundClip: 'text',
+                        MozTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
@@ -606,7 +627,10 @@ export default function ServicesPage() {
                         background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        MozBackgroundClip: 'text',
+                        MozTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
@@ -671,7 +695,10 @@ export default function ServicesPage() {
                         background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        MozBackgroundClip: 'text',
+                        MozTextFillColor: 'transparent',
                         backgroundClip: 'text',
+                        color: 'transparent',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
@@ -726,7 +753,10 @@ export default function ServicesPage() {
                   background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  MozBackgroundClip: 'text',
+                  MozTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  color: 'transparent',
                 }}
               >
                 Secure
