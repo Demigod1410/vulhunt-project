@@ -147,13 +147,31 @@
   .gradient-text {
     background: linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%);
     background: -webkit-linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%);
+    background: -moz-linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
     background-clip: text;
+    color: transparent;
     text-fill-color: transparent;
     /* Prevent text selection issues in Safari */
     -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
+  }
+  
+  /* Firefox-specific gradient text fixes */
+  @-moz-document url-prefix() {
+    [style*="background-clip: text"],
+    [style*="-webkit-background-clip: text"],
+    [style*="linear-gradient"] {
+      -moz-background-clip: text !important;
+      -moz-text-fill-color: transparent !important;
+      background-clip: text !important;
+      color: transparent !important;
+      display: inline-block !important;
+    }
   }
   
   /* Ensure smooth scrolling works in Safari (all versions) */
