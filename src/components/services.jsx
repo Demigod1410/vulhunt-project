@@ -36,14 +36,14 @@ const Services = () => {
       icon: Target,
       category: 'Crowdsourced Cybersecurity',
       title: 'Bug Bounty & Vulnerability Disclosure Programs',
-      gradient: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
+      color: '#799dfe',
       iconColor: '#799dfe',
     },
     {
       icon: Shield,
       category: 'Traditional Cybersecurity',
       title: 'Consulting, Compliance, CISO-as-a-Service, SOC Automation, Tool Consulting',
-      gradient: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
+      color: '#cc43fd',
       iconColor: '#cc43fd',
     },
   ];
@@ -164,10 +164,7 @@ const Services = () => {
           >
             <span
               style={{
-                background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#799dfe',
               }}
             >
               Services
@@ -211,7 +208,7 @@ const Services = () => {
                 <div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
                   style={{
-                    background: service.gradient,
+                    background: service.color,
                   }}
                 />
 
@@ -230,7 +227,7 @@ const Services = () => {
                     <div
                       className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
                       style={{
-                        background: service.gradient,
+                        background: service.color,
                       }}
                     />
                     <Icon
@@ -254,10 +251,7 @@ const Services = () => {
                   <h3
                     className="text-2xl sm:text-3xl font-bold mb-4"
                     style={{
-                      background: service.gradient,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                      color: service.color,
                       fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                     }}
                   >
@@ -281,12 +275,8 @@ const Services = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <span
-                      className="text-base"
                       style={{
-                        background: service.gradient,
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
+                        color: service.color,
                       }}
                     >
                       Learn More
@@ -313,7 +303,7 @@ const Services = () => {
                 <motion.div
                   className="absolute top-6 right-6 w-2 h-2 rounded-full"
                   style={{
-                    background: service.gradient,
+                    background: service.color,
                   }}
                   animate={{
                     scale: [1, 1.5, 1],
@@ -328,7 +318,7 @@ const Services = () => {
                 <motion.div
                   className="absolute bottom-6 left-6 w-2 h-2 rounded-full"
                   style={{
-                    background: service.gradient,
+                    background: service.color,
                   }}
                   animate={{
                     scale: [1, 1.5, 1],
