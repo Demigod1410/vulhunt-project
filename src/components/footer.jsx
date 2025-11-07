@@ -134,10 +134,7 @@ const Footer = () => {
             <h3
               className="text-2xl font-bold mb-6"
               style={{
-                background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#799dfe',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               }}
             >
@@ -197,10 +194,7 @@ const Footer = () => {
             <h3
               className="text-xl font-bold mb-6"
               style={{
-                background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#8722ec',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               }}
             >
@@ -239,10 +233,7 @@ const Footer = () => {
             <h3
               className="text-xl font-bold mb-6"
               style={{
-                background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               }}
             >
