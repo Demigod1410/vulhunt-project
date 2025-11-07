@@ -160,10 +160,8 @@ const HeroSection = () => {
           <span
             className="inline-block mt-2"
             style={{
-              background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: '#799dfe',
+              display: 'inline-block',
             }}
           >
             Powered by Technology & Crowdsourcing
@@ -257,20 +255,14 @@ const HeroSection = () => {
               />
               
               <div className="relative z-10">
-                <motion.div
+                <div
                   className="text-3xl sm:text-4xl font-bold mb-2"
                   style={{
-                    background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: '#799dfe',
                   }}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
                 >
                   {stat.value}
-                </motion.div>
+                </div>
                 <div className="text-sm sm:text-base text-gray-400 font-medium">
                   {stat.label}
                 </div>
