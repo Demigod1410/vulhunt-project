@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -13,6 +14,7 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [activeHash, setActiveHash] = useState('');
+  const { isDarkMode, toggleTheme } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -92,24 +94,34 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-4 left-1/2 z-50 transition-all duration-500"
       style={{
-        backgroundColor: scrolled ? 'rgba(0, 0, 25, 0.95)' : 'rgba(0, 0, 25, 0.7)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        borderBottom: scrolled ? '1px solid rgba(121, 157, 254, 0.1)' : '1px solid transparent',
+        backgroundColor: isDarkMode 
+          ? (scrolled ? 'rgba(135, 34, 236, 0.15)' : 'rgba(204, 67, 253, 0.1)')
+          : (scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.85)'),
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: isDarkMode
+          ? (scrolled ? '1px solid rgba(204, 67, 253, 0.3)' : '1px solid rgba(204, 67, 253, 0.2)')
+          : (scrolled ? '1px solid rgba(204, 67, 253, 0.3)' : '1px solid rgba(204, 67, 253, 0.2)'),
+        borderRadius: isOpen ? '24px' : '9999px',
+        boxShadow: isDarkMode
+          ? (scrolled ? '0 8px 32px rgba(204, 67, 253, 0.3)' : '0 4px 24px rgba(204, 67, 253, 0.2)')
+          : (scrolled ? '0 8px 24px rgba(204, 67, 253, 0.15)' : '0 4px 16px rgba(204, 67, 253, 0.1)'),
         willChange: 'transform',
         WebkitTransform: 'translateZ(0)',
-        transform: 'translateZ(0)',
+        transform: 'translateX(-50%) translateZ(0)',
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
+        maxWidth: '1200px',
+        width: '95%',
       }}
-      initial={{ y: -100 }}
-      animate={{ y: visible ? 0 : -100 }}
+      initial={{ y: -100, x: '-50%' }}
+      animate={{ y: visible ? 0 : -100, x: '-50%' }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo */}
           <Link href="/">
             <motion.div
@@ -118,9 +130,9 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <h1
-                className="text-2xl sm:text-3xl font-bold"
+                className="text-lg sm:text-xl lg:text-2xl font-bold"
                 style={{
-                  color: '#799dfe',
+                  color: '#cc43fd',
                   fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                 }}
               >
@@ -130,7 +142,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-2">
             {navLinks.map((link, index) => (
               <motion.div
                 key={index}
@@ -140,15 +152,25 @@ const Navbar = () => {
               >
                 <Link href={link.href}>
                   <motion.div
-                    className="relative px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                    className="relative px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-500 cursor-pointer"
                     style={{
-                      color: isActive(link.href) ? 'white' : '#d1d5db',
-                      background: isActive(link.href) 
-                        ? 'linear-gradient(135deg, rgba(121, 157, 254, 0.15), rgba(135, 34, 236, 0.15))' 
-                        : 'rgba(255, 255, 255, 0.03)',
+                      color: isDarkMode 
+                        ? (isActive(link.href) ? 'white' : '#d1d5db')
+                        : (isActive(link.href) ? '#8722ec' : '#5a5a7a'),
+                      background: isDarkMode
+                        ? (isActive(link.href) 
+                          ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.25), rgba(135, 34, 236, 0.25))' 
+                          : 'rgba(255, 255, 255, 0.05)')
+                        : (isActive(link.href)
+                          ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.15), rgba(135, 34, 236, 0.1))'
+                          : 'rgba(204, 67, 253, 0.05)'),
                       border: '1px solid',
-                      borderColor: isActive(link.href) ? 'rgba(121, 157, 254, 0.3)' : 'rgba(255, 255, 255, 0.05)',
-                      boxShadow: isActive(link.href) ? '0 0 20px rgba(121, 157, 254, 0.2)' : 'none',
+                      borderColor: isDarkMode
+                        ? (isActive(link.href) ? 'rgba(204, 67, 253, 0.5)' : 'rgba(255, 255, 255, 0.1)')
+                        : (isActive(link.href) ? 'rgba(204, 67, 253, 0.4)' : 'rgba(204, 67, 253, 0.15)'),
+                      boxShadow: isActive(link.href) 
+                        ? (isDarkMode ? '0 0 20px rgba(204, 67, 253, 0.4)' : '0 4px 12px rgba(204, 67, 253, 0.2)')
+                        : 'none',
                     }}
                     whileHover={{
                       scale: 1.05,
@@ -156,22 +178,36 @@ const Navbar = () => {
                     }}
                     whileTap={{ scale: 0.95 }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(121, 157, 254, 0.4)';
-                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(121, 157, 254, 0.12), rgba(135, 34, 236, 0.12))';
-                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(121, 157, 254, 0.25)';
-                      e.currentTarget.style.color = 'white';
+                      e.currentTarget.style.borderColor = 'rgba(204, 67, 253, 0.6)';
+                      e.currentTarget.style.background = isDarkMode
+                        ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.2), rgba(135, 34, 236, 0.2))'
+                        : 'linear-gradient(135deg, rgba(204, 67, 253, 0.2), rgba(135, 34, 236, 0.15))';
+                      e.currentTarget.style.boxShadow = isDarkMode
+                        ? '0 4px 20px rgba(204, 67, 253, 0.35)'
+                        : '0 6px 16px rgba(204, 67, 253, 0.25)';
+                      e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec';
                     }}
                     onMouseLeave={(e) => {
                       if (!isActive(link.href)) {
-                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                        e.currentTarget.style.borderColor = isDarkMode
+                          ? 'rgba(255, 255, 255, 0.1)'
+                          : 'rgba(204, 67, 253, 0.15)';
+                        e.currentTarget.style.background = isDarkMode
+                          ? 'rgba(255, 255, 255, 0.05)'
+                          : 'rgba(204, 67, 253, 0.05)';
                         e.currentTarget.style.boxShadow = 'none';
-                        e.currentTarget.style.color = '#d1d5db';
+                        e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#5a5a7a';
                       } else {
-                        e.currentTarget.style.borderColor = 'rgba(121, 157, 254, 0.3)';
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(121, 157, 254, 0.15), rgba(135, 34, 236, 0.15))';
-                        e.currentTarget.style.boxShadow = '0 0 20px rgba(121, 157, 254, 0.2)';
-                        e.currentTarget.style.color = 'white';
+                        e.currentTarget.style.borderColor = isDarkMode
+                          ? 'rgba(204, 67, 253, 0.5)'
+                          : 'rgba(204, 67, 253, 0.4)';
+                        e.currentTarget.style.background = isDarkMode
+                          ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.25), rgba(135, 34, 236, 0.25))'
+                          : 'linear-gradient(135deg, rgba(204, 67, 253, 0.15), rgba(135, 34, 236, 0.1))';
+                        e.currentTarget.style.boxShadow = isDarkMode
+                          ? '0 0 20px rgba(204, 67, 253, 0.4)'
+                          : '0 4px 12px rgba(204, 67, 253, 0.2)';
+                        e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec';
                       }
                     }}
                   >
@@ -180,29 +216,103 @@ const Navbar = () => {
                 </Link>
               </motion.div>
             ))}
+            
+            {/* Theme Toggle Button */}
+            <motion.button
+              className="p-2.5 rounded-full ml-1 transition-all duration-500"
+              style={{
+                background: isDarkMode 
+                  ? 'rgba(255, 255, 255, 0.05)' 
+                  : 'rgba(204, 67, 253, 0.08)',
+                border: '1px solid rgba(204, 67, 253, 0.3)',
+              }}
+              onClick={toggleTheme}
+              whileHover={{ 
+                scale: 1.1,
+                rotate: 180,
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(204, 67, 253, 0.2), rgba(135, 34, 236, 0.2))';
+                e.currentTarget.style.borderColor = 'rgba(204, 67, 253, 0.5)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(204, 67, 253, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = isDarkMode 
+                  ? 'rgba(255, 255, 255, 0.05)' 
+                  : 'rgba(204, 67, 253, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(204, 67, 253, 0.3)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <motion.div
+                initial={false}
+                animate={{ rotate: isDarkMode ? 0 : 180 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isDarkMode ? (
+                  <Sun className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
+                ) : (
+                  <Moon className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
+                )}
+              </motion.div>
+            </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="lg:hidden p-3 rounded-full backdrop-blur-sm"
-            style={{
-              background: 'linear-gradient(135deg, rgba(121, 157, 254, 0.12), rgba(135, 34, 236, 0.12))',
-              border: '1px solid rgba(121, 157, 254, 0.3)',
-              boxShadow: '0 4px 15px rgba(121, 157, 254, 0.2)',
-            }}
-            onClick={() => setIsOpen(!isOpen)}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: '0 4px 20px rgba(121, 157, 254, 0.3)',
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isOpen ? (
-              <X className="w-6 h-6" style={{ stroke: 'white' }} />
-            ) : (
-              <Menu className="w-6 h-6" style={{ stroke: 'white' }} />
-            )}
-          </motion.button>
+          {/* Mobile Controls */}
+          <div className="lg:hidden flex items-center gap-2">
+            {/* Theme Toggle Button - Mobile */}
+            <motion.button
+              className="p-2 rounded-full flex-shrink-0 transition-all duration-500"
+              style={{
+                background: isDarkMode 
+                  ? 'rgba(255, 255, 255, 0.05)' 
+                  : 'rgba(204, 67, 253, 0.08)',
+                border: '1px solid rgba(204, 67, 253, 0.3)',
+              }}
+              onClick={toggleTheme}
+              whileHover={{ 
+                scale: 1.1,
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                initial={false}
+                animate={{ rotate: isDarkMode ? 0 : 180 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isDarkMode ? (
+                  <Sun className="w-4 h-4 sm:w-5 sm:h-5" style={{ stroke: '#cc43fd' }} />
+                ) : (
+                  <Moon className="w-4 h-4 sm:w-5 sm:h-5" style={{ stroke: '#cc43fd' }} />
+                )}
+              </motion.div>
+            </motion.button>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="p-2 sm:p-2.5 rounded-full flex-shrink-0"
+              style={{
+                background: 'linear-gradient(135deg, rgba(204, 67, 253, 0.2), rgba(135, 34, 236, 0.2))',
+                border: '1px solid rgba(204, 67, 253, 0.4)',
+                boxShadow: '0 4px 15px rgba(204, 67, 253, 0.3)',
+              }}
+              onClick={() => setIsOpen(!isOpen)}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: '0 4px 20px rgba(204, 67, 253, 0.4)',
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {isOpen ? (
+                <X className="w-5 h-5 sm:w-6 sm:h-6" style={{ stroke: '#cc43fd' }} />
+              ) : (
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" style={{ stroke: '#cc43fd' }} />
+              )}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -220,15 +330,25 @@ const Navbar = () => {
               {navLinks.map((link, index) => (
                 <Link key={index} href={link.href}>
                   <motion.div
-                    className="block px-6 py-4 rounded-2xl text-base font-semibold transition-all duration-300 cursor-pointer backdrop-blur-sm mb-4"
+                    className="block px-6 py-4 rounded-3xl text-base font-semibold transition-all duration-500 cursor-pointer mb-3"
                     style={{
-                      color: isActive(link.href) ? 'white' : '#d1d5db',
-                      background: isActive(link.href) 
-                        ? 'linear-gradient(135deg, rgba(121, 157, 254, 0.15), rgba(135, 34, 236, 0.15))' 
-                        : 'rgba(255, 255, 255, 0.03)',
+                      color: isDarkMode 
+                        ? (isActive(link.href) ? 'white' : '#d1d5db')
+                        : (isActive(link.href) ? '#8722ec' : '#5a5a7a'),
+                      background: isDarkMode
+                        ? (isActive(link.href) 
+                          ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.25), rgba(135, 34, 236, 0.25))' 
+                          : 'rgba(255, 255, 255, 0.05)')
+                        : (isActive(link.href)
+                          ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.15), rgba(135, 34, 236, 0.1))'
+                          : 'rgba(204, 67, 253, 0.05)'),
                       border: '1px solid',
-                      borderColor: isActive(link.href) ? 'rgba(121, 157, 254, 0.3)' : 'rgba(255, 255, 255, 0.05)',
-                      boxShadow: isActive(link.href) ? '0 4px 15px rgba(121, 157, 254, 0.2)' : 'none',
+                      borderColor: isDarkMode
+                        ? (isActive(link.href) ? 'rgba(204, 67, 253, 0.5)' : 'rgba(255, 255, 255, 0.1)')
+                        : (isActive(link.href) ? 'rgba(204, 67, 253, 0.4)' : 'rgba(204, 67, 253, 0.15)'),
+                      boxShadow: isActive(link.href) 
+                        ? (isDarkMode ? '0 4px 15px rgba(204, 67, 253, 0.3)' : '0 4px 12px rgba(204, 67, 253, 0.2)')
+                        : 'none',
                     }}
                     whileHover={{
                       scale: 1.02,
@@ -237,22 +357,36 @@ const Navbar = () => {
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setIsOpen(false)}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(121, 157, 254, 0.4)';
-                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(121, 157, 254, 0.12), rgba(135, 34, 236, 0.12))';
-                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(121, 157, 254, 0.25)';
-                      e.currentTarget.style.color = 'white';
+                      e.currentTarget.style.borderColor = 'rgba(204, 67, 253, 0.6)';
+                      e.currentTarget.style.background = isDarkMode
+                        ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.2), rgba(135, 34, 236, 0.2))'
+                        : 'linear-gradient(135deg, rgba(204, 67, 253, 0.2), rgba(135, 34, 236, 0.15))';
+                      e.currentTarget.style.boxShadow = isDarkMode
+                        ? '0 4px 20px rgba(204, 67, 253, 0.35)'
+                        : '0 6px 16px rgba(204, 67, 253, 0.25)';
+                      e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec';
                     }}
                     onMouseLeave={(e) => {
                       if (!isActive(link.href)) {
-                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                        e.currentTarget.style.borderColor = isDarkMode
+                          ? 'rgba(255, 255, 255, 0.1)'
+                          : 'rgba(204, 67, 253, 0.15)';
+                        e.currentTarget.style.background = isDarkMode
+                          ? 'rgba(255, 255, 255, 0.05)'
+                          : 'rgba(204, 67, 253, 0.05)';
                         e.currentTarget.style.boxShadow = 'none';
-                        e.currentTarget.style.color = '#d1d5db';
+                        e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#5a5a7a';
                       } else {
-                        e.currentTarget.style.borderColor = 'rgba(121, 157, 254, 0.3)';
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(121, 157, 254, 0.15), rgba(135, 34, 236, 0.15))';
-                        e.currentTarget.style.boxShadow = '0 4px 15px rgba(121, 157, 254, 0.2)';
-                        e.currentTarget.style.color = 'white';
+                        e.currentTarget.style.borderColor = isDarkMode
+                          ? 'rgba(204, 67, 253, 0.5)'
+                          : 'rgba(204, 67, 253, 0.4)';
+                        e.currentTarget.style.background = isDarkMode
+                          ? 'linear-gradient(135deg, rgba(204, 67, 253, 0.25), rgba(135, 34, 236, 0.25))'
+                          : 'linear-gradient(135deg, rgba(204, 67, 253, 0.15), rgba(135, 34, 236, 0.1))';
+                        e.currentTarget.style.boxShadow = isDarkMode
+                          ? '0 4px 15px rgba(204, 67, 253, 0.3)'
+                          : '0 4px 12px rgba(204, 67, 253, 0.2)';
+                        e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec';
                       }
                     }}
                   >
@@ -265,18 +399,6 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Bottom Glow Effect */}
-      {scrolled && (
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-px"
-          style={{
-            background: 'linear-gradient(90deg, transparent, rgba(121, 157, 254, 0.3), rgba(135, 34, 236, 0.3), rgba(204, 67, 253, 0.3), transparent)',
-          }}
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        />
-      )}
     </motion.nav>
   );
 };
