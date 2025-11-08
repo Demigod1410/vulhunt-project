@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Target, Shield, Users, Lock, FileCheck, UserCog, Bot, CheckCircle, DollarSign, Award, TrendingDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
+import { useTheme } from '@/contexts/ThemeContext';
 
 
 export default function ServicesPage() {
+  const { isDarkMode } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -70,20 +72,22 @@ export default function ServicesPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#010066' }}>
+    <div className="min-h-screen transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       <Navbar />
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 pt-32">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
+            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-500"
             style={{
-              background: 'radial-gradient(circle, #8722ec 0%, transparent 70%)',
+              background: isDarkMode 
+                ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(135, 34, 236, 0.15) 0%, transparent 70%)',
             }}
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.2, 0.3, 0.2],
+              opacity: isDarkMode ? [0.2, 0.3, 0.2] : [0.3, 0.4, 0.3],
             }}
             transition={{
               duration: 8,
@@ -92,13 +96,15 @@ export default function ServicesPage() {
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
+            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-500"
             style={{
-              background: 'radial-gradient(circle, #cc43fd 0%, transparent 70%)',
+              background: isDarkMode 
+                ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(204, 67, 253, 0.12) 0%, transparent 70%)',
             }}
             animate={{
               scale: [1, 1.3, 1],
-              opacity: [0.2, 0.25, 0.2],
+              opacity: isDarkMode ? [0.2, 0.25, 0.2] : [0.25, 0.35, 0.25],
             }}
             transition={{
               duration: 10,
@@ -113,14 +119,14 @@ export default function ServicesPage() {
             {mounted && particlePositions.map((pos, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 rounded-full"
+                className="absolute w-1 h-1 rounded-full transition-colors duration-500"
                 style={{
-                  background: '#799dfe',
+                  background: isDarkMode ? '#cc43fd' : '#8722ec',
                   left: pos.left,
                   top: pos.top,
                 }}
                 animate={{
-                  opacity: [0, 0.6, 0],
+                  opacity: isDarkMode ? [0, 0.6, 0] : [0, 0.4, 0],
                   scale: [0, 1, 0],
                 }}
                 transition={{
@@ -141,8 +147,9 @@ export default function ServicesPage() {
           variants={titleVariants}
         >
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-colors duration-500"
             style={{
+              color: isDarkMode ? 'white' : '#1a1a2e',
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               letterSpacing: '-0.02em',
             }}
@@ -150,19 +157,13 @@ export default function ServicesPage() {
             Our{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                MozBackgroundClip: 'text',
-                MozTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                color: 'transparent',
+                color: '#cc43fd',
               }}
             >
               Services
             </span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl max-w-3xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
             Comprehensive cybersecurity solutions tailored to protect your digital infrastructure
           </p>
         </motion.div>
@@ -180,8 +181,9 @@ export default function ServicesPage() {
             variants={titleVariants}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-colors duration-500"
               style={{
+                color: isDarkMode ? 'white' : '#1a1a2e',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                 letterSpacing: '-0.02em',
               }}
@@ -189,13 +191,7 @@ export default function ServicesPage() {
               A.{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  MozBackgroundClip: 'text',
-                  MozTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
+                  color: '#cc43fd',
                 }}
               >
                 Crowdsourced Cybersecurity Services
@@ -212,17 +208,19 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-300 group"
+              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(121, 157, 254, 0.2)',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
               {/* Glow Effect */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
+                  background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
+                  opacity: isDarkMode ? 0 : 0.05,
                 }}
               />
 
@@ -230,66 +228,61 @@ export default function ServicesPage() {
                 {/* Icon and Number */}
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(121, 157, 254, 0.3)',
+                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
                     <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
+                      className="absolute inset-0 rounded-2xl blur-lg transition-opacity duration-500"
                       style={{
-                        background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
+                        background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
+                        opacity: isDarkMode ? 0.3 : 0.2,
                       }}
                     />
-                    <Target className="w-10 h-10 relative z-10" style={{ stroke: '#799dfe' }} />
+                    <Target className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
                     <h3
                       className="text-2xl sm:text-3xl font-bold mb-4"
                       style={{
-                        background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        MozBackgroundClip: 'text',
-                        MozTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        color: 'transparent',
+                        color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
                       1. Bug Bounty Managed Services
                     </h3>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Vulhunt's bug bounty programs are results-oriented security testing initiatives. These programs are best suited for organizations preferring to provide financial rewards to security researchers for discovering quality vulnerabilities. The clients are charged only for the vulnerabilities reported as per the agreed price for severity.
                     </p>
 
                     {/* Pricing Example Box */}
                     <div
-                      className="p-6 rounded-2xl mb-6"
+                      className="p-6 rounded-2xl mb-6 transition-all duration-500"
                       style={{
-                        background: 'rgba(121, 157, 254, 0.05)',
-                        border: '1px solid rgba(121, 157, 254, 0.2)',
+                        background: isDarkMode ? 'rgba(204, 67, 253, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                        border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                       }}
                     >
-                      <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <DollarSign className="w-6 h-6" style={{ stroke: '#799dfe' }} />
+                      <h4 className="text-xl font-bold mb-4 flex items-center gap-2 transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>
+                        <DollarSign className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
                         Pricing Example:
                       </h4>
-                      <p className="text-gray-200 text-lg">
-                        P5 (Low Severity) – $25 × 5 vulnerabilities = <span className="font-bold text-white">$125</span>
+                      <p className="text-lg transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                        P5 (Low Severity) – $25 × 5 vulnerabilities = <span className="font-bold transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>$125</span>
                       </p>
                     </div>
 
                     {/* Key Benefit */}
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#799dfe' }} />
+                      <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
                       <div>
-                        <p className="text-sm font-semibold text-gray-300 mb-1">Key Benefit:</p>
-                        <p className="text-gray-200 text-base">
+                        <p className="text-sm font-semibold mb-1 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#5a5a7a' }}>Key Benefit:</p>
+                        <p className="text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                           Clients pay only for verified vulnerabilities, ensuring cost-effectiveness.
                         </p>
                       </div>
@@ -309,17 +302,19 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-300 group"
+              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(121, 157, 254, 0.2)',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
               {/* Glow Effect */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
                 style={{
                   background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
+                  opacity: isDarkMode ? 0 : 0.05,
                 }}
               />
 
@@ -327,10 +322,10 @@ export default function ServicesPage() {
                 {/* Icon and Number */}
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(135, 34, 236, 0.3)',
+                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -348,22 +343,16 @@ export default function ServicesPage() {
                     <h3
                       className="text-2xl sm:text-3xl font-bold mb-4"
                       style={{
-                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        MozBackgroundClip: 'text',
-                        MozTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        color: 'transparent',
+                        color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
                       2. Vulnerability Disclosure Programs (VDP)
                     </h3>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed mb-4">
+                    <p className="text-base sm:text-lg leading-relaxed mb-4 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       VDP offers a budget-controlled alternative to traditional bug bounty programs. Security researchers are rewarded with non-monetary rewards such as T-shirts, laptop bags, or recognition.
                     </p>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+                    <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Vulhunt charges a standard monthly fee, with no hidden costs.
                     </p>
                   </div>
@@ -376,7 +365,7 @@ export default function ServicesPage() {
           <motion.div
             className="my-20 mx-auto max-w-lg h-1 rounded-full"
             style={{
-              background: 'linear-gradient(90deg, transparent, #799dfe, #8722ec, #cc43fd, transparent)',
+              background: 'linear-gradient(90deg, transparent, #8722ec, #cc43fd, #d654ff, transparent)',
             }}
             initial={{ scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 0.5 }}
@@ -398,8 +387,9 @@ export default function ServicesPage() {
             variants={titleVariants}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-colors duration-500"
               style={{
+                color: isDarkMode ? 'white' : '#1a1a2e',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                 letterSpacing: '-0.02em',
               }}
@@ -407,13 +397,7 @@ export default function ServicesPage() {
               B.{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  MozBackgroundClip: 'text',
-                  MozTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
+                  color: '#cc43fd',
                 }}
               >
                 Traditional Cybersecurity Services
@@ -430,27 +414,29 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-300 group"
+              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(204, 67, 253, 0.2)',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
               {/* Glow Effect */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
+                  background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
+                  opacity: isDarkMode ? 0 : 0.05,
                 }}
               />
 
               <div className="relative z-10">
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(204, 67, 253, 0.3)',
+                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -458,7 +444,7 @@ export default function ServicesPage() {
                     <div
                       className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
                       style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
+                        background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
                       }}
                     />
                     <Shield className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
@@ -468,19 +454,13 @@ export default function ServicesPage() {
                     <h3
                       className="text-2xl sm:text-3xl font-bold mb-4"
                       style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        MozBackgroundClip: 'text',
-                        MozTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        color: 'transparent',
+                        color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
                       1. Cybersecurity Consulting (VAPT)
                     </h3>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+                    <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Comprehensive Vulnerability Assessment & Penetration Testing (VAPT) covering systems, Applications, Infrastructure and Cloud Services for assessing vulnerabilities for understanding risk posture and its mitigation.
                     </p>
                   </div>
@@ -498,27 +478,29 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-300 group"
+              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(121, 157, 254, 0.2)',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
               {/* Glow Effect */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
+                  background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
+                  opacity: isDarkMode ? 0 : 0.05,
                 }}
               />
 
               <div className="relative z-10">
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(121, 157, 254, 0.3)',
+                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -526,29 +508,23 @@ export default function ServicesPage() {
                     <div
                       className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
                       style={{
-                        background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
+                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
                       }}
                     />
-                    <FileCheck className="w-10 h-10 relative z-10" style={{ stroke: '#799dfe' }} />
+                    <FileCheck className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
                     <h3
                       className="text-2xl sm:text-3xl font-bold mb-4"
                       style={{
-                        background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        MozBackgroundClip: 'text',
-                        MozTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        color: 'transparent',
+                        color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
                       2. Compliance & Certification Services
                     </h3>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Internal audits and Third-Party Risk Assessments (TPRM / TPRA), and certification services* for global standards:
                     </p>
 
@@ -557,18 +533,18 @@ export default function ServicesPage() {
                       {['ISO 27001', 'ISO 22301', 'PCI DSS', 'COBIT', 'SOC 2 Type II'].map((standard, idx) => (
                         <div
                           key={idx}
-                          className="p-3 rounded-xl text-center"
+                          className="p-3 rounded-xl text-center transition-all duration-500"
                           style={{
-                            background: 'rgba(121, 157, 254, 0.1)',
-                            border: '1px solid rgba(121, 157, 254, 0.3)',
+                            background: isDarkMode ? 'rgba(204, 67, 253, 0.1)' : 'rgba(204, 67, 253, 0.08)',
+                            border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                           }}
                         >
-                          <p className="text-white font-semibold text-sm">{standard}</p>
+                          <p className="font-semibold text-sm transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>{standard}</p>
                         </div>
                       ))}
                     </div>
 
-                    <p className="text-gray-400 text-sm italic">
+                    <p className="text-sm italic transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>
                       * certification provided in collaboration with certification partners.
                     </p>
                   </div>
@@ -586,27 +562,29 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-300 group"
+              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(135, 34, 236, 0.2)',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
               {/* Glow Effect */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
                 style={{
                   background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
+                  opacity: isDarkMode ? 0 : 0.05,
                 }}
               />
 
               <div className="relative z-10">
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(135, 34, 236, 0.3)',
+                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -624,19 +602,13 @@ export default function ServicesPage() {
                     <h3
                       className="text-2xl sm:text-3xl font-bold mb-4"
                       style={{
-                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        MozBackgroundClip: 'text',
-                        MozTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        color: 'transparent',
+                        color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
                       3. CISO-as-a-Service
                     </h3>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+                    <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Vulhunt's CISO and Virtual CISO services provide top-tier cybersecurity leadership to SMBs, optimizing the cost and complexity of hiring full-time executives.
                     </p>
                   </div>
@@ -654,27 +626,29 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-300 group"
+              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(204, 67, 253, 0.2)',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
               {/* Glow Effect */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
+                  background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
+                  opacity: isDarkMode ? 0 : 0.05,
                 }}
               />
 
               <div className="relative z-10">
                 <div className="flex items-start gap-6 mb-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(204, 67, 253, 0.3)',
+                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -682,7 +656,7 @@ export default function ServicesPage() {
                     <div
                       className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
                       style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
+                        background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
                       }}
                     />
                     <Bot className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
@@ -692,33 +666,27 @@ export default function ServicesPage() {
                     <h3
                       className="text-2xl sm:text-3xl font-bold mb-4"
                       style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        MozBackgroundClip: 'text',
-                        MozTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        color: 'transparent',
+                        color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                       }}
                     >
                       4. SOC Automation & Tool Consulting
                     </h3>
-                    <p className="text-gray-200 text-base sm:text-lg leading-relaxed mb-6">
+                    <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       AI & ML-powered solutions for SOC automation, compliance, and governance.
                     </p>
 
                     {/* Benefits List */}
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
-                        <TrendingDown className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#799dfe' }} />
-                        <p className="text-gray-200 text-base">
+                        <TrendingDown className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
+                        <p className="text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                           Reduce cybersecurity management costs by 20%–45%
                         </p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#799dfe' }} />
-                        <p className="text-gray-200 text-base">
+                        <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
+                        <p className="text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                           Expertise in evaluation, selection, onboarding, and implementation of best cybersecurity tools
                         </p>
                       </div>
@@ -741,29 +709,24 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 transition-colors duration-500"
               style={{
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                 letterSpacing: '-0.02em',
+                color: isDarkMode ? 'white' : '#1a1a2e',
               }}
             >
               Ready to{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  MozBackgroundClip: 'text',
-                  MozTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent',
+                  color: '#cc43fd',
                 }}
               >
                 Secure
               </span>{' '}
               Your Business?
             </h2>
-            <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg mb-10 max-w-2xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
               Let our experts help you build a robust cybersecurity strategy tailored to your needs
             </p>
 
@@ -774,22 +737,22 @@ export default function ServicesPage() {
             >
               <div
                 className="absolute inset-0 rounded-xl blur-xl opacity-0 hover:opacity-50 transition-opacity duration-300"
-                style={{ background: 'linear-gradient(135deg, #799dfe 0%, #cc43fd 100%)' }}
+                style={{ background: '#cc43fd' }}
               />
               <Button
                 size="lg"
                 className="relative px-10 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl"
                 style={{
-                  background: 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)',
+                  background: '#cc43fd',
                   color: 'white',
                   border: 'none',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #8fa9ff 0%, #9833fd 50%, #d654ff 100%)';
-                  e.currentTarget.style.boxShadow = '0 0 40px rgba(121, 157, 254, 0.6)';
+                  e.currentTarget.style.background = '#d654ff';
+                  e.currentTarget.style.boxShadow = '0 0 40px rgba(204, 67, 253, 0.6)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #799dfe 0%, #8722ec 50%, #cc43fd 100%)';
+                  e.currentTarget.style.background = '#cc43fd';
                   e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
                 }}
               >
@@ -809,11 +772,14 @@ export default function ServicesPage() {
 
       {/* Bottom Fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none transition-all duration-500"
         style={{
-          background: 'linear-gradient(to bottom, transparent, #010066)',
+          background: isDarkMode 
+            ? 'linear-gradient(to bottom, transparent, #1a0033)'
+            : 'linear-gradient(to bottom, transparent, #f8f9ff)',
         }}
       />
     </div>
   );
 }
+
