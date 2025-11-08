@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion';
 import { Mail, Globe, MapPin, ArrowRight, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -60,18 +62,21 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 pb-8" style={{ backgroundColor: '#000033' }}>
+    <footer className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 pb-8 transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle Gradient Glow */}
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-10"
+          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(circle, #799dfe 0%, transparent 70%)',
+            background: isDarkMode 
+              ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(204, 67, 253, 0.1) 0%, transparent 70%)',
+            opacity: isDarkMode ? 0.1 : 0.2,
           }}
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.1, 0.15, 0.1],
+            opacity: isDarkMode ? [0.1, 0.15, 0.1] : [0.2, 0.25, 0.2],
           }}
           transition={{
             duration: 10,
@@ -82,11 +87,14 @@ const Footer = () => {
         <motion.div
           className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-10"
           style={{
-            background: 'radial-gradient(circle, #8722ec 0%, transparent 70%)',
+            background: isDarkMode 
+              ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(135, 34, 236, 0.12) 0%, transparent 70%)',
+            opacity: isDarkMode ? 0.1 : 0.22,
           }}
           animate={{
             scale: [1, 1.3, 1],
-            opacity: [0.1, 0.12, 0.1],
+            opacity: isDarkMode ? [0.1, 0.12, 0.1] : [0.22, 0.28, 0.22],
           }}
           transition={{
             duration: 12,
@@ -103,12 +111,12 @@ const Footer = () => {
               key={i}
               className="absolute w-0.5 h-0.5 rounded-full"
               style={{
-                background: '#799dfe',
+                background: isDarkMode ? '#cc43fd' : '#8722ec',
                 left: pos.left,
                 top: pos.top,
               }}
               animate={{
-                opacity: [0, 0.4, 0],
+                opacity: isDarkMode ? [0, 0.4, 0] : [0, 0.3, 0],
                 scale: [0, 1, 0],
               }}
               transition={{
@@ -134,23 +142,23 @@ const Footer = () => {
             <h3
               className="text-2xl font-bold mb-6"
               style={{
-                color: '#799dfe',
+                color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               }}
             >
               Vulhunt
             </h3>
-            <p className="text-gray-400 mb-6 leading-relaxed text-sm">
+            <p className="mb-6 leading-relaxed text-sm transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>
               Next-Generation Cybersecurity platform powered by AI-driven technology and crowdsourced security research.
             </p>
 
             {/* Address */}
             <div className="space-y-4">
               <div className="flex items-start gap-3 group">
-                <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ stroke: '#799dfe' }} />
+                <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ stroke: '#cc43fd' }} />
                 <div>
-                  <p className="text-gray-300 text-sm font-semibold mb-1">Address</p>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-sm font-semibold mb-1 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>Address</p>
+                  <p className="text-sm leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>
                     Vulhunt,<br />
                     C/O SASOSS, Workflow Ranka Junction, 3rd Floor,<br />
                     Near Benniganagalli Metro Station, OMR Road,<br />
@@ -163,20 +171,26 @@ const Footer = () => {
               <div className="space-y-3 pt-2">
                 <motion.a
                   href="mailto:business@vulhunt.in"
-                  className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 transition-colors duration-500 group"
+                  style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}
                   whileHover={{ x: 5 }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#9ca3af' : '#5a5a7a'}
                 >
-                  <Mail className="w-5 h-5" style={{ stroke: '#799dfe' }} />
+                  <Mail className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
                   <span className="text-sm">business@vulhunt.in</span>
                 </motion.a>
                 <motion.a
                   href="https://www.vulhunt.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 transition-colors duration-500 group"
+                  style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}
                   whileHover={{ x: 5 }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#9ca3af' : '#5a5a7a'}
                 >
-                  <Globe className="w-5 h-5" style={{ stroke: '#799dfe' }} />
+                  <Globe className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
                   <span className="text-sm">www.vulhunt.com</span>
                 </motion.a>
               </div>
@@ -194,7 +208,7 @@ const Footer = () => {
             <h3
               className="text-xl font-bold mb-6"
               style={{
-                color: '#8722ec',
+                color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               }}
             >
@@ -209,11 +223,14 @@ const Footer = () => {
                 >
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2 group"
+                    className="transition-colors duration-500 text-sm flex items-center gap-2 group"
+                    style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#9ca3af' : '#5a5a7a'}
                   >
                     <ArrowRight
                       className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                      style={{ stroke: '#799dfe' }}
+                      style={{ stroke: '#cc43fd' }}
                     />
                     <span>{link.name}</span>
                   </a>
@@ -248,11 +265,14 @@ const Footer = () => {
                 >
                   <a
                     href={service.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2 group"
+                    className="transition-colors duration-500 text-sm flex items-center gap-2 group"
+                    style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#9ca3af' : '#5a5a7a'}
                   >
                     <ArrowRight
                       className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                      style={{ stroke: '#8722ec' }}
+                      style={{ stroke: '#cc43fd' }}
                     />
                     <span>{service.name}</span>
                   </a>
@@ -264,9 +284,11 @@ const Footer = () => {
 
         {/* Divider */}
         <motion.div
-          className="w-full h-px mb-8"
+          className="w-full h-px mb-8 transition-all duration-500"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(121, 157, 254, 0.3), rgba(135, 34, 236, 0.3), rgba(204, 67, 253, 0.3), transparent)',
+            background: isDarkMode 
+              ? 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.3), rgba(135, 34, 236, 0.3), rgba(214, 84, 255, 0.3), transparent)'
+              : 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.4), rgba(135, 34, 236, 0.4), rgba(214, 84, 255, 0.4), transparent)',
           }}
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
@@ -278,7 +300,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Copyright */}
           <motion.p
-            className="text-gray-500 text-sm text-center md:text-left"
+            className="text-sm text-center md:text-left transition-colors duration-500"
+            style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -304,25 +327,26 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-500"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(121, 157, 254, 0.2)',
+                    background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'rgba(204, 67, 253, 0.05)',
+                    border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
+                    boxShadow: isDarkMode ? 'none' : '0 2px 8px rgba(204, 67, 253, 0.1)',
                   }}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#799dfe';
-                    e.currentTarget.style.boxShadow = '0 0 20px rgba(121, 157, 254, 0.3)';
-                    e.currentTarget.style.background = 'rgba(121, 157, 254, 0.1)';
+                    e.currentTarget.style.borderColor = '#cc43fd';
+                    e.currentTarget.style.boxShadow = `0 0 20px rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`;
+                    e.currentTarget.style.background = 'rgba(204, 67, 253, 0.1)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(121, 157, 254, 0.2)';
-                    e.currentTarget.style.boxShadow = 'none';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                    e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
+                    e.currentTarget.style.boxShadow = isDarkMode ? 'none' : '0 2px 8px rgba(204, 67, 253, 0.1)';
+                    e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'rgba(204, 67, 253, 0.05)';
                   }}
                 >
-                  <Icon className="w-5 h-5" style={{ stroke: '#799dfe' }} />
+                  <Icon className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
                 </motion.a>
               );
             })}
@@ -338,13 +362,19 @@ const Footer = () => {
           >
             <a
               href="#"
-              className="text-gray-500 hover:text-white transition-colors"
+              className="transition-colors duration-500"
+              style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
+              onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#6b7280' : '#7a7a9a'}
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-white transition-colors"
+              className="transition-colors duration-500"
+              style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
+              onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#6b7280' : '#7a7a9a'}
             >
               Terms of Service
             </a>
