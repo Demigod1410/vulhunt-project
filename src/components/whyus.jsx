@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion';
 import { Shield, Users, Brain, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const WhyUs = () => {
   const [mounted, setMounted] = useState(false);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -89,18 +91,25 @@ const WhyUs = () => {
   };
 
   return (
-    <section id="whyus" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20" style={{ backgroundColor: '#010066' }}>
+    <section 
+      id="whyus" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 transition-colors duration-500" 
+      style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}
+    >
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Radial Gradient Glow */}
         <motion.div
-          className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-15"
+          className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(circle, #8722ec 0%, transparent 70%)',
+            background: isDarkMode 
+              ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)' 
+              : 'radial-gradient(circle, rgba(135, 34, 236, 0.15) 0%, transparent 70%)',
+            opacity: isDarkMode ? 0.15 : 0.3,
           }}
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
+            opacity: isDarkMode ? [0.15, 0.25, 0.15] : [0.3, 0.4, 0.3],
           }}
           transition={{
             duration: 10,
@@ -109,13 +118,16 @@ const WhyUs = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-15"
+          className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(circle, #799dfe 0%, transparent 70%)',
+            background: isDarkMode 
+              ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)' 
+              : 'radial-gradient(circle, rgba(204, 67, 253, 0.2) 0%, transparent 70%)',
+            opacity: isDarkMode ? 0.15 : 0.35,
           }}
           animate={{
             scale: [1, 1.3, 1],
-            opacity: [0.15, 0.2, 0.15],
+            opacity: isDarkMode ? [0.15, 0.2, 0.15] : [0.35, 0.45, 0.35],
           }}
           transition={{
             duration: 12,
@@ -132,12 +144,12 @@ const WhyUs = () => {
               key={i}
               className="absolute w-1 h-1 rounded-full"
               style={{
-                background: '#cc43fd',
+                background: isDarkMode ? '#cc43fd' : '#8722ec',
                 left: pos.left,
                 top: pos.top,
               }}
               animate={{
-                opacity: [0, 0.5, 0],
+                opacity: isDarkMode ? [0, 0.5, 0] : [0, 0.4, 0],
                 scale: [0, 1, 0],
               }}
               transition={{
@@ -160,16 +172,17 @@ const WhyUs = () => {
           variants={titleVariants}
         >
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 transition-colors duration-500"
             style={{
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               letterSpacing: '-0.02em',
+              color: isDarkMode ? 'white' : '#1a1a2e',
             }}
           >
             Why{' '}
             <span
               style={{
-                color: '#799dfe',
+                color: '#cc43fd',
               }}
             >
               Vulhunt
@@ -192,20 +205,33 @@ const WhyUs = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 group cursor-pointer"
+                className="relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-500 group cursor-pointer"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(121, 157, 254, 0.2)',
+                  background: isDarkMode 
+                    ? 'rgba(255, 255, 255, 0.03)' 
+                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                  boxShadow: isDarkMode 
+                    ? 'none' 
+                    : '0 4px 12px rgba(204, 67, 253, 0.08)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#799dfe';
-                  e.currentTarget.style.boxShadow = '0 0 30px rgba(121, 157, 254, 0.3)';
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.borderColor = '#cc43fd';
+                  e.currentTarget.style.boxShadow = isDarkMode 
+                    ? '0 0 30px rgba(204, 67, 253, 0.3)' 
+                    : '0 8px 24px rgba(204, 67, 253, 0.2)';
+                  e.currentTarget.style.background = isDarkMode 
+                    ? 'rgba(255, 255, 255, 0.05)' 
+                    : 'linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 249, 255, 0.95))';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(121, 157, 254, 0.2)';
-                  e.currentTarget.style.boxShadow = 'none';
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                  e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`;
+                  e.currentTarget.style.boxShadow = isDarkMode 
+                    ? 'none' 
+                    : '0 4px 12px rgba(204, 67, 253, 0.08)';
+                  e.currentTarget.style.background = isDarkMode 
+                    ? 'rgba(255, 255, 255, 0.03)' 
+                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))';
                 }}
               >
                 {/* Glow Effect on Hover */}
@@ -220,10 +246,12 @@ const WhyUs = () => {
                 <div className="relative z-10 flex items-start gap-6">
                   {/* Icon Container */}
                   <motion.div
-                    className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center relative"
+                    className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center relative transition-all duration-500"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(121, 157, 254, 0.3)',
+                      background: isDarkMode 
+                        ? 'rgba(255, 255, 255, 0.05)' 
+                        : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 5 }}
                     transition={{ duration: 0.3 }}
@@ -243,7 +271,7 @@ const WhyUs = () => {
                     <svg width="0" height="0">
                       <defs>
                         <linearGradient id={`gradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style={{ stopColor: '#799dfe', stopOpacity: 1 }} />
+                          <stop offset="0%" style={{ stopColor: isDarkMode ? '#cc43fd' : '#8722ec', stopOpacity: 1 }} />
                           <stop offset="50%" style={{ stopColor: '#8722ec', stopOpacity: 1 }} />
                           <stop offset="100%" style={{ stopColor: '#cc43fd', stopOpacity: 1 }} />
                         </linearGradient>
@@ -254,9 +282,10 @@ const WhyUs = () => {
                   {/* Text */}
                   <div className="flex-1 pt-1">
                     <p
-                      className="text-lg sm:text-xl text-gray-200 leading-relaxed font-medium"
+                      className="text-lg sm:text-xl leading-relaxed font-medium transition-colors duration-500"
                       style={{
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                        color: isDarkMode ? '#d1d5db' : '#4a4a6a',
                       }}
                     >
                       {feature.title}
@@ -287,12 +316,15 @@ const WhyUs = () => {
 
         {/* Bottom Decorative Line */}
         <motion.div
-          className="mt-16 mx-auto max-w-md h-1 rounded-full"
+          className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
           style={{
-            background: 'linear-gradient(90deg, transparent, #799dfe, #8722ec, #cc43fd, transparent)',
+            background: isDarkMode 
+              ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+              : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+            opacity: isDarkMode ? 0.5 : 0.6,
           }}
           initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 0.5 }}
+          whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
           viewport={{ once: true }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
         />
@@ -300,9 +332,11 @@ const WhyUs = () => {
 
       {/* Bottom Fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none transition-all duration-500"
         style={{
-          background: 'linear-gradient(to bottom, transparent, #010066)',
+          background: isDarkMode 
+            ? 'linear-gradient(to bottom, transparent, #1a0033)' 
+            : 'linear-gradient(to bottom, transparent, #f8f9ff)',
         }}
       />
     </section>
