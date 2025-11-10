@@ -197,9 +197,9 @@ const Services = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -8 }}
-                className="relative p-8 lg:p-10 rounded-2xl backdrop-blur-sm transition-all duration-500 group cursor-pointer"
+                className={`relative p-8 lg:p-10 rounded-2xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
-                  background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                   border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                   boxShadow: isDarkMode ? 'none' : '0 4px 12px rgba(204, 67, 253, 0.08)',
                 }}
@@ -210,14 +210,14 @@ const Services = () => {
                     : `0 8px 24px rgba(204, 67, 253, 0.2)`;
                   e.currentTarget.style.background = isDarkMode 
                     ? 'rgba(255, 255, 255, 0.06)'
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 249, 255, 0.95))';
+                    : '#ffffff';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`;
                   e.currentTarget.style.boxShadow = isDarkMode ? 'none' : '0 4px 12px rgba(204, 67, 253, 0.08)';
                   e.currentTarget.style.background = isDarkMode 
                     ? 'rgba(255, 255, 255, 0.03)'
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))';
+                    : '#f5f5f7';
                 }}
               >
                 {/* Glow Effect on Hover */}
@@ -234,33 +234,20 @@ const Services = () => {
                   <motion.div
                     className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 relative"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(121, 157, 254, 0.3)',
+                      background: isDarkMode 
+                        ? 'rgba(255, 255, 255, 0.05)' 
+                        : 'rgba(204, 67, 253, 0.08)',
+                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                     }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
-                      style={{
-                        background: service.color,
-                      }}
-                    />
                     <Icon
-                      className="w-10 h-10 relative z-10"
+                      className="w-10 h-10"
                       style={{
-                        stroke: 'url(#serviceGradient' + index + ')',
+                        stroke: '#cc43fd',
                       }}
                     />
-                    <svg width="0" height="0">
-                      <defs>
-                        <linearGradient id={`serviceGradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style={{ stopColor: '#cc43fd', stopOpacity: 1 }} />
-                          <stop offset="50%" style={{ stopColor: '#8722ec', stopOpacity: 1 }} />
-                          <stop offset="100%" style={{ stopColor: '#d654ff', stopOpacity: 1 }} />
-                        </linearGradient>
-                      </defs>
-                    </svg>
                   </motion.div>
 
                   {/* Category */}
@@ -317,34 +304,18 @@ const Services = () => {
                 </div>
 
                 {/* Decorative Corner Elements */}
-                <motion.div
+                <div
                   className="absolute top-6 right-6 w-2 h-2 rounded-full"
                   style={{
-                    background: service.color,
-                  }}
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: index * 0.4,
+                    background: '#cc43fd',
+                    opacity: 0.5,
                   }}
                 />
-                <motion.div
+                <div
                   className="absolute bottom-6 left-6 w-2 h-2 rounded-full"
                   style={{
-                    background: service.color,
-                  }}
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: index * 0.4 + 0.5,
+                    background: '#cc43fd',
+                    opacity: 0.5,
                   }}
                 />
               </motion.div>
