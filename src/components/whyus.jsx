@@ -205,11 +205,11 @@ const WhyUs = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-500 group cursor-pointer"
+                className={`relative p-8 rounded-2xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
                   background: isDarkMode 
                     ? 'rgba(255, 255, 255, 0.03)' 
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                    : '#f5f5f7',
                   border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                   boxShadow: isDarkMode 
                     ? 'none' 
@@ -222,7 +222,7 @@ const WhyUs = () => {
                     : '0 8px 24px rgba(204, 67, 253, 0.2)';
                   e.currentTarget.style.background = isDarkMode 
                     ? 'rgba(255, 255, 255, 0.05)' 
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 249, 255, 0.95))';
+                    : '#ffffff';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`;
@@ -231,7 +231,7 @@ const WhyUs = () => {
                     : '0 4px 12px rgba(204, 67, 253, 0.08)';
                   e.currentTarget.style.background = isDarkMode 
                     ? 'rgba(255, 255, 255, 0.03)' 
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))';
+                    : '#f5f5f7';
                 }}
               >
                 {/* Glow Effect on Hover */}
@@ -256,27 +256,12 @@ const WhyUs = () => {
                     whileHover={{ rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-xl opacity-30 blur-lg"
-                      style={{
-                        background: feature.gradient,
-                      }}
-                    />
                     <Icon
-                      className="w-8 h-8 relative z-10"
+                      className="w-8 h-8"
                       style={{
-                        stroke: 'url(#gradient' + index + ')',
+                        stroke: '#cc43fd',
                       }}
                     />
-                    <svg width="0" height="0">
-                      <defs>
-                        <linearGradient id={`gradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" style={{ stopColor: isDarkMode ? '#cc43fd' : '#8722ec', stopOpacity: 1 }} />
-                          <stop offset="50%" style={{ stopColor: '#8722ec', stopOpacity: 1 }} />
-                          <stop offset="100%" style={{ stopColor: '#cc43fd', stopOpacity: 1 }} />
-                        </linearGradient>
-                      </defs>
-                    </svg>
                   </motion.div>
 
                   {/* Text */}
@@ -294,19 +279,11 @@ const WhyUs = () => {
                 </div>
 
                 {/* Decorative Corner Element */}
-                <motion.div
+                <div
                   className="absolute top-4 right-4 w-2 h-2 rounded-full"
                   style={{
-                    background: feature.gradient,
-                  }}
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: index * 0.3,
+                    background: '#cc43fd',
+                    opacity: 0.5,
                   }}
                 />
               </motion.div>
