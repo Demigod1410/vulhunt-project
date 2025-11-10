@@ -203,11 +203,11 @@ export default function ContactPage() {
               variants={fadeInVariants}
             >
               <div
-                className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500"
+                className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
                   background: isDarkMode 
                     ? 'rgba(255, 255, 255, 0.03)' 
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                    : '#f5f5f7',
                   border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                   boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
                 }}
@@ -248,7 +248,7 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-3 rounded-xl transition-all duration-500 focus:outline-none focus:ring-2"
                         style={{
-                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : '#f5f5f7',
                           border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                           color: isDarkMode ? 'white' : '#1a1a2e',
                         }}
@@ -279,7 +279,7 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-3 rounded-xl transition-all duration-500 focus:outline-none focus:ring-2"
                         style={{
-                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : '#f5f5f7',
                           border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                           color: isDarkMode ? 'white' : '#1a1a2e',
                         }}
@@ -310,7 +310,7 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-3 rounded-xl transition-all duration-500 focus:outline-none focus:ring-2"
                         style={{
-                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : '#f5f5f7',
                           border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                           color: isDarkMode ? 'white' : '#1a1a2e',
                         }}
@@ -341,7 +341,7 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-3 rounded-xl transition-all duration-500 focus:outline-none focus:ring-2"
                         style={{
-                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : '#f5f5f7',
                           border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                           color: isDarkMode ? 'white' : '#1a1a2e',
                         }}
@@ -372,7 +372,7 @@ export default function ContactPage() {
                         rows={6}
                         className="w-full px-4 py-3 rounded-xl transition-all duration-500 focus:outline-none focus:ring-2 resize-none"
                         style={{
-                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
+                          background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : '#f5f5f7',
                           border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                           color: isDarkMode ? 'white' : '#1a1a2e',
                         }}
@@ -429,11 +429,11 @@ export default function ContactPage() {
               transition={{ delay: 0.3 }}
             >
               <div
-                className="relative p-8 rounded-3xl backdrop-blur-sm h-full transition-all duration-500"
+                className={`relative p-8 rounded-3xl h-full transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
                   background: isDarkMode 
                     ? 'rgba(255, 255, 255, 0.03)' 
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                    : '#f5f5f7',
                   border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                   boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
                 }}
@@ -468,18 +468,18 @@ export default function ContactPage() {
                       <div className="flex items-start gap-4 p-4 rounded-xl transition-all duration-300"
                         style={{
                           background: 'rgba(255, 255, 255, 0.02)',
-                          border: '1px solid rgba(135, 34, 236, 0.1)',
+                          border: '1px solid rgba(204, 67, 253, 0.1)',
                         }}
                       >
                         <motion.div
                           className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
                           style={{
-                            background: 'rgba(135, 34, 236, 0.1)',
-                            border: '1px solid rgba(135, 34, 236, 0.3)',
+                            background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                            border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
                           }}
                           whileHover={{ rotate: 5 }}
                         >
-                          <Mail className="w-6 h-6" style={{ stroke: '#8722ec' }} />
+                          <Mail className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
                         </motion.div>
                         <div className="flex-1">
                           <p className="text-sm mb-1 font-semibold transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>Mail</p>
@@ -487,7 +487,7 @@ export default function ContactPage() {
                             href="mailto:business@vulhunt.in"
                             className="text-base transition-colors duration-500 break-all"
                             style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}
-                            onMouseEnter={(e) => e.currentTarget.style.color = '#8722ec'}
+                            onMouseEnter={(e) => e.currentTarget.style.color = '#cc43fd'}
                             onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#1a1a2e'}
                           >
                             business@vulhunt.in
@@ -526,7 +526,7 @@ export default function ContactPage() {
                             rel="noopener noreferrer"
                             className="text-base transition-colors duration-500 break-all"
                             style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}
-                            onMouseEnter={(e) => e.currentTarget.style.color = '#8722ec'}
+                            onMouseEnter={(e) => e.currentTarget.style.color = '#cc43fd'}
                             onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#1a1a2e'}
                           >
                             www.vulhunt.com
