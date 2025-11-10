@@ -243,11 +243,11 @@ export default function AboutUsPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -311,11 +311,11 @@ export default function AboutUsPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -341,14 +341,7 @@ export default function AboutUsPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl blur-lg transition-opacity duration-500"
-                      style={{
-                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                        opacity: isDarkMode ? 0.3 : 0.2,
-                      }}
-                    />
-                    <Calendar className="w-10 h-10 relative z-10" style={{ stroke: '#8722ec' }} />
+                    <Calendar className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1 space-y-6">
@@ -404,13 +397,23 @@ export default function AboutUsPage() {
             <motion.div
               variants={fadeInVariants}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
+              }}
+              onMouseEnter={(e) => {
+                if (!isDarkMode) {
+                  e.currentTarget.style.background = '#ffffff';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isDarkMode) {
+                  e.currentTarget.style.background = '#f5f5f7';
+                }
               }}
             >
               {/* Glow Effect */}
@@ -433,14 +436,7 @@ export default function AboutUsPage() {
                   whileHover={{ rotate: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div
-                    className="absolute inset-0 rounded-xl blur-lg transition-opacity duration-500"
-                    style={{
-                      background: 'linear-gradient(135deg, #cc43fd 0%, #d654ff 100%)',
-                      opacity: isDarkMode ? 0.3 : 0.2,
-                    }}
-                  />
-                  <Briefcase className="w-8 h-8 relative z-10" style={{ stroke: '#cc43fd' }} />
+                  <Briefcase className="w-8 h-8" style={{ stroke: '#cc43fd' }} />
                 </motion.div>
 
                 <h3
@@ -462,13 +458,23 @@ export default function AboutUsPage() {
             <motion.div
               variants={fadeInVariants}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
+              }}
+              onMouseEnter={(e) => {
+                if (!isDarkMode) {
+                  e.currentTarget.style.background = '#ffffff';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isDarkMode) {
+                  e.currentTarget.style.background = '#f5f5f7';
+                }
               }}
             >
               {/* Glow Effect */}
@@ -491,14 +497,7 @@ export default function AboutUsPage() {
                   whileHover={{ rotate: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div
-                    className="absolute inset-0 rounded-xl blur-lg transition-opacity duration-500"
-                    style={{
-                      background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                      opacity: isDarkMode ? 0.3 : 0.2,
-                    }}
-                  />
-                  <Users className="w-8 h-8 relative z-10" style={{ stroke: '#cc43fd' }} />
+                  <Users className="w-8 h-8" style={{ stroke: '#cc43fd' }} />
                 </motion.div>
 
                 <h3
@@ -560,13 +559,23 @@ export default function AboutUsPage() {
                   key={index}
                   variants={fadeInVariants}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-500 group"
+                  className={`relative p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                   style={{
                     background: isDarkMode 
                       ? 'rgba(255, 255, 255, 0.03)' 
-                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                      : '#f5f5f7',
                     border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                     boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isDarkMode) {
+                      e.currentTarget.style.background = '#ffffff';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isDarkMode) {
+                      e.currentTarget.style.background = '#f5f5f7';
+                    }
                   }}
                 >
                   {/* Glow Effect */}
@@ -589,23 +598,7 @@ export default function AboutUsPage() {
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <div
-                        className="absolute inset-0 rounded-xl blur-lg transition-opacity duration-500"
-                        style={{
-                          background: partner.gradient,
-                          opacity: isDarkMode ? 0.3 : 0.2,
-                        }}
-                      />
-                      <Icon className="w-8 h-8 relative z-10" style={{ stroke: 'url(#partnerGradient' + index + ')' }} />
-                      <svg width="0" height="0">
-                        <defs>
-                          <linearGradient id={`partnerGradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style={{ stopColor: '#cc43fd', stopOpacity: 1 }} />
-                            <stop offset="50%" style={{ stopColor: '#8722ec', stopOpacity: 1 }} />
-                            <stop offset="100%" style={{ stopColor: '#cc43fd', stopOpacity: 1 }} />
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                      <Icon className="w-8 h-8" style={{ stroke: '#cc43fd' }} />
                     </motion.div>
 
                     {/* Content */}
@@ -626,19 +619,11 @@ export default function AboutUsPage() {
                   </div>
 
                   {/* Decorative Corner Element */}
-                  <motion.div
+                  <div
                     className="absolute top-4 right-4 w-2 h-2 rounded-full"
                     style={{
-                      background: partner.gradient,
-                    }}
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.3,
+                      background: '#cc43fd',
+                      opacity: 0.5,
                     }}
                   />
                 </motion.div>
