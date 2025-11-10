@@ -208,9 +208,9 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -236,14 +236,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl blur-lg transition-opacity duration-500"
-                      style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                        opacity: isDarkMode ? 0.3 : 0.2,
-                      }}
-                    />
-                    <Target className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
+                    <Target className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
@@ -302,9 +295,9 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -330,13 +323,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                      }}
-                    />
-                    <Award className="w-10 h-10 relative z-10" style={{ stroke: '#8722ec' }} />
+                    <Award className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
@@ -414,9 +401,9 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -441,13 +428,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                      }}
-                    />
-                    <Shield className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
+                    <Shield className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
@@ -478,9 +459,9 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -505,13 +486,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                      }}
-                    />
-                    <FileCheck className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
+                    <FileCheck className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
@@ -562,9 +537,9 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -589,13 +564,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                      }}
-                    />
-                    <UserCog className="w-10 h-10 relative z-10" style={{ stroke: '#8722ec' }} />
+                    <UserCog className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
@@ -626,9 +595,9 @@ export default function ServicesPage() {
             variants={fadeInVariants}
           >
             <div
-              className="relative p-8 lg:p-12 rounded-3xl backdrop-blur-sm transition-all duration-500 group"
+              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
@@ -653,13 +622,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-30 blur-lg"
-                      style={{
-                        background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                      }}
-                    />
-                    <Bot className="w-10 h-10 relative z-10" style={{ stroke: '#cc43fd' }} />
+                    <Bot className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
