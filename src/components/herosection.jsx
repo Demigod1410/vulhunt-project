@@ -83,7 +83,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 md:pt-0 transition-colors duration-500" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 md:pt-40 lg:pt-32 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#ffffffff' }}
     >
       {/* Threads Background */}
@@ -255,11 +255,11 @@ const HeroSection = () => {
               key={index}
               variants={statsVariants}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="relative p-6 rounded-xl backdrop-blur-sm transition-all duration-500 group cursor-pointer"
+              className={`relative p-6 rounded-xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))',
+                  : '#f5f5f7',
                 border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
                 boxShadow: isDarkMode 
                   ? 'none' 
@@ -272,7 +272,7 @@ const HeroSection = () => {
                   : '0 8px 24px rgba(204, 67, 253, 0.2)';
                 e.currentTarget.style.background = isDarkMode 
                   ? 'rgba(255, 255, 255, 0.05)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 249, 255, 0.95))';
+                  : '#ffffff';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`;
@@ -281,7 +281,7 @@ const HeroSection = () => {
                   : '0 4px 12px rgba(204, 67, 253, 0.08)';
                 e.currentTarget.style.background = isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 255, 0.8))';
+                  : '#f5f5f7';
               }}
             >
               {/* Glow Effect on Hover */}
