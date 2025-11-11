@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { ArrowRight, Target, Shield } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import Link from 'next/link';
 
 const Services = () => {
   const [mounted, setMounted] = useState(false);
@@ -273,34 +274,36 @@ const Services = () => {
                   </p>
 
                   {/* Arrow Button */}
-                  <motion.div
-                    className="inline-flex items-center gap-2 text-white font-semibold group/arrow"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <span
-                      style={{
-                        color: service.color,
-                      }}
-                    >
-                      Learn More
-                    </span>
+                  <Link href="/services">
                     <motion.div
-                      animate={{
-                        x: [0, 5, 0],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
+                      className="inline-flex items-center gap-2 text-white font-semibold group/arrow cursor-pointer"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <ArrowRight
-                        className="w-5 h-5"
-                        style={{ stroke: service.iconColor }}
-                      />
+                      <span
+                        style={{
+                          color: service.color,
+                        }}
+                      >
+                        Learn More
+                      </span>
+                      <motion.div
+                        animate={{
+                          x: [0, 5, 0],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
+                      >
+                        <ArrowRight
+                          className="w-5 h-5"
+                          style={{ stroke: service.iconColor }}
+                        />
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
+                  </Link>
                 </div>
 
                 {/* Decorative Corner Elements */}
