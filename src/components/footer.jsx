@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Globe, MapPin, ArrowRight, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, Globe, MapPin, ArrowRight, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
@@ -44,9 +44,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Facebook, href: '#', label: 'Facebook' },
   ];
 
   const fadeInVariants = {
@@ -307,7 +307,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            © {new Date().getFullYear()} Vulhunt. All rights reserved.
+            All rights reserved by Mahaasenaya Cybertech Venture Pvt. Ltd.
           </motion.p>
 
           {/* Social Links */}
@@ -350,34 +350,6 @@ const Footer = () => {
                 </motion.a>
               );
             })}
-          </motion.div>
-
-          {/* Legal Links */}
-          <motion.div
-            className="flex items-center gap-6 text-sm"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <a
-              href="#"
-              className="transition-colors duration-500"
-              style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
-              onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#6b7280' : '#7a7a9a'}
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="transition-colors duration-500"
-              style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
-              onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#6b7280' : '#7a7a9a'}
-            >
-              Terms of Service
-            </a>
           </motion.div>
         </div>
       </div>
