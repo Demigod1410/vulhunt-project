@@ -216,32 +216,34 @@ const HeroSection = () => {
               className="absolute inset-0 rounded-xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"
               style={{ background: '#cc43fd' }}
             />
-            <Button
-              size="lg"
-              className="relative px-8 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
-              style={{
-                backgroundColor: '#cc43fd',
-                color: 'white',
-                border: 'none',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#d654ff';
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(204, 67, 253, 0.6)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#cc43fd';
-                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
-              }}
-            >
-              Enquire Now
-              <motion.span
-                className="ml-2 inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScluoVQP6nvzwVP0PnlXv-1UHOHqJ1HNgS5ElGIBbQ0Nx3sQw/viewform" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="relative px-8 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
+                style={{
+                  backgroundColor: '#cc43fd',
+                  color: 'white',
+                  border: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#d654ff';
+                  e.currentTarget.style.boxShadow = '0 0 30px rgba(204, 67, 253, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#cc43fd';
+                  e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+                }}
               >
-                →
-              </motion.span>
-            </Button>
+                Enquire Now
+                <motion.span
+                  className="ml-2 inline-block"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
 
