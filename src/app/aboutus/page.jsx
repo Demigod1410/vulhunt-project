@@ -6,6 +6,7 @@ import { Shield, Users, Calendar, Handshake, Award, Briefcase, TrendingUp } from
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
 import { useTheme } from '@/contexts/ThemeContext';
+import Image from 'next/image';
 
 
 export default function AboutUsPage() {
@@ -52,25 +53,43 @@ export default function AboutUsPage() {
       name: 'SASOSS',
       role: 'Technology Partner',
       gradient: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-      icon: Shield,
+      logo: '/sasoss1.png',
+      scale: 1.5,
     },
     {
       name: 'Coditing',
       role: 'Consulting Partner (Certification & Data Privacy Services)',
       gradient: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-      icon: Award,
+      logo: '/coditing.png',
+      scale: 1.5,
     },
     {
       name: 'NeoCISO',
       role: 'SOC Automation Technology Partner',
       gradient: 'linear-gradient(135deg, #cc43fd 0%, #799dfe 100%)',
-      icon: Briefcase,
+      logo: '/neo.png',
+      scale: 1.5,
     },
     {
       name: 'NAWOM',
       role: 'Growth & Marketing Partner',
       gradient: 'linear-gradient(135deg, #799dfe 0%, #cc43fd 100%)',
-      icon: TrendingUp,
+      logo: '/nawom.png',
+      scale: 1.5,
+    },
+    {
+      name: 'HTS Consulting',
+      role: 'SOC & Automation Partner',
+      gradient: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
+      logo: '/HTS.png',
+      scale: 1.5,
+    },
+    {
+      name: 'Cyber Cosmous',
+      role: 'Emerging Tech Security Partner',
+      gradient: 'linear-gradient(135deg, #8722ec 0%, #799dfe 100%)',
+      logo: `/CyberLogo.png`,
+      scale: 5.0,
     },
   ];
 
@@ -519,8 +538,8 @@ export default function AboutUsPage() {
       </section>
 
       {/* Partners Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20">
-        <div className="relative z-10 max-w-7xl mx-auto">
+      <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
           {/* Section Title */}
           <motion.div
             className="mb-12"
@@ -553,7 +572,6 @@ export default function AboutUsPage() {
             animate="visible"
           >
             {partners.map((partner, index) => {
-              const Icon = partner.icon;
               return (
                 <motion.div
                   key={index}
@@ -588,17 +606,24 @@ export default function AboutUsPage() {
                   />
 
                   <div className="relative z-10 flex items-start gap-6">
-                    {/* Icon */}
+                    {/* Logo */}
                     <motion.div
-                      className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center relative transition-all duration-500"
+                      className="flex-shrink-0 w-40 h-40 rounded-xl flex items-center justify-center relative overflow-hidden transition-all duration-500"
                       style={{
-                        background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                        background: isDarkMode ? 'rgba(255, 255, 255, 0.95)' : '#ffffff',
                         border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                        padding: '20px',
                       }}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <Icon className="w-8 h-8" style={{ stroke: '#cc43fd' }} />
+                      <Image
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        width={160}
+                        height={160}
+                        className="object-contain w-full h-full"
+                      />
                     </motion.div>
 
                     {/* Content */}
