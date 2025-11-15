@@ -344,32 +344,34 @@ const Services = () => {
               className="absolute inset-0 rounded-xl blur-xl opacity-0 hover:opacity-50 transition-opacity duration-300"
               style={{ background: '#cc43fd' }}
             />
-            <Button
-              size="lg"
-              className="relative px-10 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
-              style={{
-                background: '#cc43fd',
-                color: 'white',
-                border: 'none',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#d654ff';
-                e.currentTarget.style.boxShadow = '0 0 40px rgba(204, 67, 253, 0.6)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#cc43fd';
-                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
-              }}
-            >
-              Get a free consultation
-              <motion.span
-                className="ml-2 inline-block"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+            <Link href="https://docs.google.com/forms/d/e/1FAIpQLScluoVQP6nvzwVP0PnlXv-1UHOHqJ1HNgS5ElGIBbQ0Nx3sQw/viewform" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="relative px-10 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
+                style={{
+                  background: '#cc43fd',
+                  color: 'white',
+                  border: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#d654ff';
+                  e.currentTarget.style.boxShadow = '0 0 40px rgba(204, 67, 253, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#cc43fd';
+                  e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+                }}
               >
-                →
-              </motion.span>
-            </Button>
+                Get a free Demo
+                <motion.span
+                  className="ml-2 inline-block"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Subtext */}
