@@ -29,18 +29,18 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#' },
-    { name: 'Services', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'About Us', href: '/aboutus' },
+    { name: 'Services', href: '/services' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   const services = [
-    { name: 'Vulnerability Disclosure', href: '#' },
-    { name: 'CISO-as-a-Service', href: '#' },
-    { name: 'SOC Automation', href: '#' },
-    { name: 'Compliance Consulting', href: '#' },
-    { name: 'Security Assessment', href: '#' },
-    { name: 'Tool Consulting', href: '#' },
+    { name: 'Vulnerability Disclosure', href: '/services' },
+    { name: 'CISO-as-a-Service', href: '/services' },
+    { name: 'SOC Automation', href: '/services' },
+    { name: 'Compliance Consulting', href: '/services' },
+    { name: 'Security Assessment', href: '/services' },
+    { name: 'Tool Consulting', href: '/services' },
   ];
 
   const socialLinks = [
