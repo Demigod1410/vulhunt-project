@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -128,15 +129,14 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h1
-                className="text-lg sm:text-xl lg:text-2xl font-bold"
-                style={{
-                  color: '#cc43fd',
-                  fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                }}
-              >
-                Vulhunt
-              </h1>
+              <Image
+              src={isDarkMode ? '/vulhunt-white - Copy.png' : '/vulhunt1.png'}
+              alt="Vulhunt"
+              width={120}
+              height={60}
+              className="h-10 sm:h-10 w-auto object-contain"
+              priority
+            />
             </motion.div>
           </Link>
 
