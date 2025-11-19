@@ -199,7 +199,7 @@ export default function ServicesPage() {
             </h2>
           </motion.div>
 
-          {/* Service 1: Bug Bounty */}
+          {/* Service 1 & 2: Bug Bounty and VDP */}
           <motion.div
             className="mb-12"
             initial="hidden"
@@ -224,9 +224,9 @@ export default function ServicesPage() {
                 }}
               />
 
-              <div className="relative z-10">
-                {/* Icon and Number */}
-                <div className="flex items-start gap-6 mb-6">
+              <div className="relative z-10 space-y-12">
+                {/* Service 1: Bug Bounty */}
+                <div className="flex items-start gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
@@ -282,38 +282,19 @@ export default function ServicesPage() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Service 2: VDP */}
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInVariants}
-          >
-            <div
-              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
-              style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-            >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                  opacity: isDarkMode ? 0 : 0.05,
-                }}
-              />
+                {/* Divider */}
+                <div
+                  className="w-full h-px"
+                  style={{
+                    background: isDarkMode 
+                      ? 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.3), rgba(135, 34, 236, 0.3), rgba(214, 84, 255, 0.3), transparent)'
+                      : 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.4), rgba(135, 34, 236, 0.4), rgba(214, 84, 255, 0.4), transparent)',
+                  }}
+                />
 
-              <div className="relative z-10">
-                {/* Icon and Number */}
-                <div className="flex items-start gap-6 mb-6">
+                {/* Service 2: VDP */}
+                <div className="flex items-start gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
@@ -392,7 +373,7 @@ export default function ServicesPage() {
             </h2>
           </motion.div>
 
-          {/* Service 1: Cybersecurity Consulting */}
+          {/* Service 1-4: Traditional Cybersecurity Services */}
           <motion.div
             className="mb-12"
             initial="hidden"
@@ -417,8 +398,9 @@ export default function ServicesPage() {
                 }}
               />
 
-              <div className="relative z-10">
-                <div className="flex items-start gap-6 mb-6">
+              <div className="relative z-10 space-y-12">
+                {/* Service 1: Cybersecurity Consulting */}
+                <div className="flex items-start gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
@@ -446,37 +428,19 @@ export default function ServicesPage() {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Service 2: Compliance & Certification */}
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInVariants}
-          >
-            <div
-              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
-              style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-            >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                  opacity: isDarkMode ? 0 : 0.05,
-                }}
-              />
+                {/* Divider */}
+                <div
+                  className="w-full h-px"
+                  style={{
+                    background: isDarkMode 
+                      ? 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.3), rgba(135, 34, 236, 0.3), rgba(214, 84, 255, 0.3), transparent)'
+                      : 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.4), rgba(135, 34, 236, 0.4), rgba(214, 84, 255, 0.4), transparent)',
+                  }}
+                />
 
-              <div className="relative z-10">
-                <div className="flex items-start gap-6 mb-6">
+                {/* Service 2: Compliance & Certification */}
+                <div className="flex items-start gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
@@ -524,37 +488,19 @@ export default function ServicesPage() {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Service 3: CISO-as-a-Service */}
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInVariants}
-          >
-            <div
-              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
-              style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-            >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                  opacity: isDarkMode ? 0 : 0.05,
-                }}
-              />
+                {/* Divider */}
+                <div
+                  className="w-full h-px"
+                  style={{
+                    background: isDarkMode 
+                      ? 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.3), rgba(135, 34, 236, 0.3), rgba(214, 84, 255, 0.3), transparent)'
+                      : 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.4), rgba(135, 34, 236, 0.4), rgba(214, 84, 255, 0.4), transparent)',
+                  }}
+                />
 
-              <div className="relative z-10">
-                <div className="flex items-start gap-6 mb-6">
+                {/* Service 3: CISO-as-a-Service */}
+                <div className="flex items-start gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
@@ -582,37 +528,19 @@ export default function ServicesPage() {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Service 4: SOC Automation */}
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInVariants}
-          >
-            <div
-              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
-              style={{
-                background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-            >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-3xl transition-opacity duration-300 blur-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                  opacity: isDarkMode ? 0 : 0.05,
-                }}
-              />
+                {/* Divider */}
+                <div
+                  className="w-full h-px"
+                  style={{
+                    background: isDarkMode 
+                      ? 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.3), rgba(135, 34, 236, 0.3), rgba(214, 84, 255, 0.3), transparent)'
+                      : 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.4), rgba(135, 34, 236, 0.4), rgba(214, 84, 255, 0.4), transparent)',
+                  }}
+                />
 
-              <div className="relative z-10">
-                <div className="flex items-start gap-6 mb-6">
+                {/* Service 4: SOC Automation */}
+                <div className="flex items-start gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
