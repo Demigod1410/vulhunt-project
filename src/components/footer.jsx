@@ -131,16 +131,17 @@ const Footer = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12 mb-12">
           {/* Company Info */}
           <motion.div
+            className="flex flex-col"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInVariants}
           >
             <h3
-              className="text-2xl font-bold mb-6"
+              className="text-xl font-bold mb-6"
               style={{
                 color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -199,6 +200,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <motion.div
+            className="flex flex-col"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -241,6 +243,7 @@ const Footer = () => {
 
           {/* Services */}
           <motion.div
+            className="flex flex-col"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
