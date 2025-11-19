@@ -51,8 +51,8 @@ const Partners = () => {
             logos={partnerLogos}
             speed={120}
             direction="left"
-            logoHeight={64}
-            gap={64}
+            logoHeight={120}
+            gap={120}
             hoverSpeed={0}
             scaleOnHover
             fadeOut
