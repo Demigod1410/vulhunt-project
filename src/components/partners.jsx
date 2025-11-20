@@ -2,9 +2,20 @@
 
 import LogoLoop from './LogoLoop';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useEffect, useState } from 'react';
 
 const Partners = () => {
   const { isDarkMode } = useTheme();
+  const [isLowEnd, setIsLowEnd] = useState(false);
+
+  useEffect(() => {
+    // Simple performance check
+    const start = performance.now();
+    setTimeout(() => {
+      const duration = performance.now() - start;
+      setIsLowEnd(duration > 50); // If setTimeout takes >50ms, likely low-end
+    }, 0);
+  }, []);
 
   const partnerLogos = [
     { src: "/coditing.png", alt: "Coditing", title: "Coditing" },
@@ -45,18 +56,18 @@ const Partners = () => {
           </p>
         </div>
 
-        {/* Logo Loop */}
-        <div className="relative">
+        <div className="relative" style={{ willChange: 'transform', backgroundColor: '#f5f5f7' }}>
           <LogoLoop
             logos={partnerLogos}
-            speed={120}
+            speed={isLowEnd ? 60 : 120} // Slower on low-end
             direction="left"
-            logoHeight={120}
-            gap={120}
+            logoHeight={isLowEnd ? 80 : 120} // Smaller logos on low-end
+            gap={isLowEnd ? 80 : 120} // Smaller gaps on low-end
             hoverSpeed={0}
-            scaleOnHover
-            fadeOut
+            scaleOnHover={!isLowEnd} // Disable hover effects on low-end
+            fadeOut={!isLowEnd} // Disable fade effects on low-end
             fadeOutColor={isDarkMode ? '#1a0033' : '#f8f9ff'}
+            logoClassName={isDarkMode ? 'bg-white/20 p-1 rounded' : ''}
             ariaLabel="Partner companies"
           />
         </div>
