@@ -158,6 +158,7 @@ export const LogoLoop = memo(({
   renderItem,
   ariaLabel = 'Partner logos',
   className,
+  logoClassName,
   style
 }) => {
   const containerRef = useRef(null);
@@ -295,7 +296,8 @@ export const LogoLoop = memo(({
           '[image-rendering:-webkit-optimize-contrast]',
           'motion-reduce:transition-none',
           scaleOnHover &&
-            'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+            'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120',
+          logoClassName
         )}
         src={item.src}
         srcSet={item.srcSet}
