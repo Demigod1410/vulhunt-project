@@ -21,30 +21,6 @@ const HeroSection = () => {
     { value: '1,400+', label: 'Security Researchers' },
   ];
 
-  // Fixed particle positions to avoid hydration mismatch
-  const particlePositions = [
-    { left: '10%', top: '15%' },
-    { left: '25%', top: '35%' },
-    { left: '40%', top: '20%' },
-    { left: '55%', top: '45%' },
-    { left: '70%', top: '25%' },
-    { left: '85%', top: '40%' },
-    { left: '15%', top: '60%' },
-    { left: '30%', top: '75%' },
-    { left: '45%', top: '65%' },
-    { left: '60%', top: '80%' },
-    { left: '75%', top: '70%' },
-    { left: '90%', top: '85%' },
-    { left: '20%', top: '50%' },
-    { left: '50%', top: '30%' },
-    { left: '80%', top: '55%' },
-    { left: '35%', top: '90%' },
-    { left: '65%', top: '10%' },
-    { left: '12%', top: '85%' },
-    { left: '88%', top: '15%' },
-    { left: '48%', top: '88%' },
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -106,6 +82,7 @@ const HeroSection = () => {
               ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)' 
               : 'radial-gradient(circle, rgba(135, 34, 236, 0.15) 0%, transparent 70%)',
             opacity: isDarkMode ? 0.2 : 0.3,
+            willChange: 'transform, opacity',
           }}
           animate={{
             scale: [1, 1.2, 1],
@@ -124,6 +101,7 @@ const HeroSection = () => {
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)' 
               : 'radial-gradient(circle, rgba(204, 67, 253, 0.2) 0%, transparent 70%)',
             opacity: isDarkMode ? 0.2 : 0.35,
+            willChange: 'transform, opacity',
           }}
           animate={{
             scale: [1, 1.3, 1],
@@ -137,29 +115,6 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Particle Network Effect */}
-        <div className="absolute inset-0">
-          {mounted && particlePositions.map((pos, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full"
-              style={{
-                background: isDarkMode ? '#cc43fd' : '#8722ec',
-                left: pos.left,
-                top: pos.top,
-              }}
-              animate={{
-                opacity: isDarkMode ? [0, 0.6, 0] : [0, 0.4, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3 + (i % 3),
-                repeat: Infinity,
-                delay: i * 0.25,
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Main Content */}
@@ -201,7 +156,7 @@ const HeroSection = () => {
             color: isDarkMode ? '#d1d5db' : '#4a4a6a',
           }}
         >
-          We help organizations identify, prevent, and remediate vulnerabilities through our AI-driven platform and a global security researcher community.
+          We help organizations identify, prevent, and remediate vulnerabilities through our AI driven platform and a global security researcher community.
         </motion.p>
 
         {/* CTA Button */}
@@ -210,6 +165,7 @@ const HeroSection = () => {
             className="inline-block relative"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            style={{ willChange: 'transform' }}
           >
             {/* Button Glow Effect */}
             <div
@@ -266,6 +222,7 @@ const HeroSection = () => {
                 boxShadow: isDarkMode 
                   ? 'none' 
                   : '0 4px 12px rgba(204, 67, 253, 0.08)',
+                willChange: 'transform, box-shadow, border-color, background',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = '#cc43fd';
