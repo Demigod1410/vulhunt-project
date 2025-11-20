@@ -130,7 +130,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Image
-              src={isDarkMode ? '/vulhunt-white - Copy.png' : '/vulhunt1.png'}
+              src='/v1.png'
               alt="Vulhunt"
               width={120}
               height={60}
