@@ -45,7 +45,7 @@ const WhyUs = () => {
     },
     {
       icon: Brain,
-      title: 'AI & ML-enabled platform for real-time vulnerability detection',
+      title: 'AI & ML enabled platform for real-time vulnerability detection',
       gradient: 'linear-gradient(135deg, #799dfe 0%, #cc43fd 100%)',
     },
     {
