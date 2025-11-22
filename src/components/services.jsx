@@ -362,7 +362,7 @@ const Services = () => {
                   e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
                 }}
               >
-                Get a free Demo
+                Book a Consultation
                 <motion.span
                   className="ml-2 inline-block"
                   animate={{ x: [0, 5, 0] }}
