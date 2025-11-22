@@ -259,18 +259,28 @@ export const LogoLoop = memo(({
     if (effectiveHoverSpeed !== undefined) setIsHovered(false);
   }, [effectiveHoverSpeed]);
 
-  const renderLogoItem = useCallback((item, key) => {
+  const renderLogoItem = useCallback((item, key, index, totalItems) => {
+    const itemHeight = item.height || logoHeight;
+
     if (renderItem) {
       return (
         <li
           className={cx(
-            'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]',
+            'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1] flex items-center relative',
             isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]',
             scaleOnHover && 'overflow-visible group/item'
           )}
           key={key}
-          role="listitem">
+          role="listitem"
+          style={{ '--logoloop-itemHeight': `${itemHeight}px` }}>
           {renderItem(item, key)}
+          {!isVertical && (
+            <div
+              className="absolute right-0 top-0 h-[var(--logoloop-logoHeight)] w-0.5 bg-neutral-500 z-20 opacity-60"
+              style={{ transform: 'translateX(50%)', marginRight: 'calc(var(--logoloop-gap) / 2 * -1)' }}
+              aria-hidden="true"
+            />
+          )}
         </li>
       );
     }
@@ -291,7 +301,7 @@ export const LogoLoop = memo(({
     ) : (
       <img
         className={cx(
-          'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
+          'h-[var(--logoloop-itemHeight)] w-auto block object-contain',
           '[-webkit-user-drag:none] pointer-events-none',
           '[image-rendering:-webkit-optimize-contrast]',
           'motion-reduce:transition-none',
@@ -334,13 +344,21 @@ export const LogoLoop = memo(({
     return (
       <li
         className={cx(
-          'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]',
+          'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1] flex items-center relative',
           isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]',
           scaleOnHover && 'overflow-visible group/item'
         )}
         key={key}
-        role="listitem">
+        role="listitem"
+        style={{ '--logoloop-itemHeight': `${itemHeight}px` }}>
         {inner}
+        {!isVertical && (
+          <div
+            className="absolute right-0 top-0 h-[var(--logoloop-logoHeight)] w-0.5 bg-neutral-500 z-20 opacity-60"
+            style={{ transform: 'translateX(50%)', marginRight: 'calc(var(--logoloop-gap) / 2 * -1)' }}
+            aria-hidden="true"
+          />
+        )}
       </li>
     );
   }, [isVertical, scaleOnHover, renderItem]);
@@ -353,7 +371,7 @@ export const LogoLoop = memo(({
         role="list"
         aria-hidden={copyIndex > 0}
         ref={copyIndex === 0 ? seqRef : undefined}>
-        {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`))}
+        {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`, itemIndex, logos.length))}
       </ul>
     )), [copyCount, logos, renderLogoItem, isVertical]);
 
