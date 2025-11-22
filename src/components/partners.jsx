@@ -22,8 +22,8 @@ const Partners = () => {
     { src: "/CyberLogo.png", alt: "Cyber Cosmous", title: "Cyber Cosmous" },
     { src: "/HTS.png", alt: "HTS Consulting", title: "HTS Consulting" },
     { src: "/nawom.png", alt: "NAWOM", title: "NAWOM" },
+     { src: "/sasoss1.png", alt: "SASOSS", title: "SASOSS", },
     { src: "/neo.png", alt: "NeoCISO", title: "NeoCISO" },
-    { src: "/sasoss1.png", alt: "SASOSS", title: "SASOSS" },
     { src: "/vulhunt.png", alt: "Vulhunt", title: "Vulhunt" },
   ];
 
@@ -56,7 +56,7 @@ const Partners = () => {
           </p>
         </div>
 
-        <div className="relative" style={{ willChange: 'transform', backgroundColor: '#f5f5f7' }}>
+        <div className="relative flex justify-center" style={{ willChange: 'transform', backgroundColor: '#f5f5f7' }}>
           <LogoLoop
             logos={partnerLogos}
             speed={isLowEnd ? 60 : 120} // Slower on low-end
@@ -65,7 +65,7 @@ const Partners = () => {
             gap={isLowEnd ? 80 : 120} // Smaller gaps on low-end
             hoverSpeed={0}
             scaleOnHover={!isLowEnd} // Disable hover effects on low-end
-            fadeOut={!isLowEnd} // Disable fade effects on low-end
+            fadeOut={false} // Disable fade effects
             fadeOutColor={isDarkMode ? '#1a0033' : '#f8f9ff'}
             logoClassName={isDarkMode ? 'bg-white/20 p-1 rounded' : ''}
             ariaLabel="Partner companies"
