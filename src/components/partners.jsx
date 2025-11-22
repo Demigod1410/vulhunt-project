@@ -22,17 +22,16 @@ const Partners = () => {
     { src: "/CyberLogo.png", alt: "Cyber Cosmous", title: "Cyber Cosmous" },
     { src: "/HTS.png", alt: "HTS Consulting", title: "HTS Consulting" },
     { src: "/nawom.png", alt: "NAWOM", title: "NAWOM" },
-     { src: "/sasoss1.png", alt: "SASOSS", title: "SASOSS", },
+     { src: "/s2.png", alt: "SASOSS", title: "SASOSS", },
     { src: "/neo.png", alt: "NeoCISO", title: "NeoCISO" },
-    { src: "/vulhunt.png", alt: "Vulhunt", title: "Vulhunt" },
   ];
 
   return (
     <section 
-      className="relative py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-500" 
+      className="relative py-10 px-4 sm:px-6 lg:px-8 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full">
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2
@@ -56,7 +55,7 @@ const Partners = () => {
           </p>
         </div>
 
-        <div className="relative flex justify-center" style={{ willChange: 'transform', backgroundColor: '#f5f5f7' }}>
+        <div className="relative flex justify-center w-full" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
           <LogoLoop
             logos={partnerLogos}
             speed={isLowEnd ? 60 : 120} // Slower on low-end
@@ -66,22 +65,11 @@ const Partners = () => {
             hoverSpeed={0}
             scaleOnHover={!isLowEnd} // Disable hover effects on low-end
             fadeOut={false} // Disable fade effects
-            fadeOutColor={isDarkMode ? '#1a0033' : '#f8f9ff'}
             logoClassName={isDarkMode ? 'bg-white/20 p-1 rounded' : ''}
             ariaLabel="Partner companies"
           />
         </div>
       </div>
-
-      {/* Bottom Fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none transition-all duration-500"
-        style={{
-          background: isDarkMode 
-            ? 'linear-gradient(to bottom, transparent, #1a0033)'
-            : 'linear-gradient(to bottom, transparent, #f8f9ff)',
-        }}
-      />
     </section>
   );
 };
