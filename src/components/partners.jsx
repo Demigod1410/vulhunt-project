@@ -28,7 +28,7 @@ const Partners = () => {
 
   return (
     <section 
-      className="relative py-10 px-4 sm:px-6 lg:px-8 transition-colors duration-500" 
+      className="relative py-6 px-4 sm:px-6 lg:px-8 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}
     >
       <div className="w-full">
