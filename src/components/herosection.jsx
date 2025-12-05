@@ -59,7 +59,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 md:pt-40 lg:pt-32 transition-colors duration-500" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-30 lg:pt-2 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#ffffffff' }}
     >
       {/* Threads Background */}
@@ -272,6 +272,21 @@ const HeroSection = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Bottom Decorative Line */}
+        <motion.div
+          className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+          style={{
+            background: isDarkMode 
+              ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+              : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+            opacity: isDarkMode ? 0.5 : 0.6,
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        />
       </motion.div>
 
       {/* Bottom Fade */}
