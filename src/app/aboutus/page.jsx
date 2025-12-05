@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Shield, Users, Calendar, Handshake, Award, Briefcase, TrendingUp } from 'lucide-react';
+import { Shield, Users, Calendar, Handshake, Award, Briefcase, TrendingUp, Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -133,7 +133,7 @@ export default function AboutUsPage() {
     <div className="min-h-screen transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
         <Navbar />
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 pt-32">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-12 pt-32">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -224,45 +224,46 @@ export default function AboutUsPage() {
           <p className="text-lg sm:text-xl max-w-3xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
             Building the future of cybersecurity through innovation, trust, and community
           </p>
+
+          {/* Bottom Decorative Line */}
+          <motion.div
+            className="mt-8 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+            style={{
+              background: isDarkMode 
+                ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+                : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+              opacity: isDarkMode ? 0.5 : 0.6,
+            }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+          />
         </motion.div>
       </section>
 
-      {/* Company Overview Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20">
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section Title */}
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            animate="visible"
-            variants={titleVariants}
-          >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-colors duration-500"
-              style={{
-                color: isDarkMode ? 'white' : '#1a1a2e',
-                fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              <span
-                style={{
-                  color: '#cc43fd',
-                }}
-              >
-                Company Overview
-              </span>
-            </h2>
-          </motion.div>
-
-          {/* Overview Content */}
+      {/* Combined Company Info Section - All in one screen */}
+      <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-8 -mt-24">
+        <div className="relative z-10 max-w-7xl mx-auto w-full space-y-6">
+          
+          {/* Company Overview */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeInVariants}
           >
+            <h2
+              className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-500"
+              style={{
+                color: '#cc43fd',
+                fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Company Overview
+            </h2>
             <div
-              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+              className={`relative p-5 lg:p-6 rounded-2xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
@@ -271,269 +272,224 @@ export default function AboutUsPage() {
                 boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
               }}
             >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-500"
-                style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                  opacity: isDarkMode ? 0.1 : 0.05,
-                }}
-              />
-
-              <div className="relative z-10 space-y-6">
-                <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                  Vulhunt is a next-generation cybersecurity solutions company built on the ethos of quality, trust, and scalable security.
-                </p>
-                <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                  We leverage the combined power of technology and crowdsourcing to provide robust security for organizations worldwide.
-                </p>
-                <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                  Our community of 1,400+ security researchers continuously tests systems and applications for a wide range of real-world scenarios, enabling real-time vulnerability detection for remediation.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Journey Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20">
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section Title */}
-          <motion.div
-            className="mb-12"
-            initial="hidden"
-            animate="visible"
-            variants={titleVariants}
-          >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
-              style={{
-                fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              <span
-                style={{
-                  color: '#cc43fd',
-                }}
-              >
-                Our Journey
-              </span>
-            </h2>
-          </motion.div>
-
-          {/* Journey Content */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInVariants}
-          >
-            <div
-              className={`relative p-8 lg:p-12 rounded-3xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
-              style={{
-                background: isDarkMode 
-                  ? 'rgba(255, 255, 255, 0.03)' 
-                  : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-            >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-500"
-                style={{
-                  background: 'linear-gradient(135deg, #8722ec 0%, #cc43fd 100%)',
-                  opacity: isDarkMode ? 0.1 : 0.05,
-                }}
-              />
-
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className="flex items-start gap-6 mb-6">
-                  <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
-                    style={{
-                      background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
-                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
-                    }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Calendar className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
-                  </motion.div>
-
-                  <div className="flex-1 space-y-6">
-                    <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                      Founded in 2020, Vulhunt started as India's first next-generation crowdsourced cybersecurity platform. It was also the world's first AI & ML-enabled platform delivering Bug Bounty and Vulnerability Disclosure Program (VDP) services.
-                    </p>
-                    <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                      As customer requirements evolved, Vulhunt expanded into traditional cybersecurity consulting, compliance, and SOC services, while maintaining our crowdsourced security excellence.
-                    </p>
-                  </div>
+              <div className="flex gap-4">
+                {/* Icon inside box */}
+                <motion.div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
+                  style={{
+                    background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                    border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                  }}
+                  whileHover={{ rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Shield className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
+                </motion.div>
+                <div className="relative z-10 space-y-3">
+                  <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    Vulhunt is a next-generation cybersecurity solutions company built on the ethos of quality, trust, and scalable security.
+                  </p>
+                  <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    We leverage the combined power of technology and crowdsourcing to provide robust security for organizations worldwide.
+                  </p>
+                  <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    Our community of 1,400+ security researchers continuously tests systems and applications for a wide range of real-world scenarios, enabling real-time vulnerability detection for remediation.
+                  </p>
                 </div>
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Our Team & Community Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20">
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section Title */}
+          {/* Our Journey */}
           <motion.div
-            className="mb-12"
             initial="hidden"
             animate="visible"
-            variants={titleVariants}
+            variants={fadeInVariants}
+            transition={{ delay: 0.1 }}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
+              className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-500"
               style={{
+                color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                 letterSpacing: '-0.02em',
               }}
             >
-              <span
-                style={{
-                  color: '#cc43fd',
-                }}
-              >
-                Our Team & Community
-              </span>
+              Our Journey
             </h2>
+            <div
+              className={`relative p-6 lg:p-8 rounded-2xl transition-all duration-500 ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+              style={{
+                background: isDarkMode 
+                  ? 'rgba(255, 255, 255, 0.03)' 
+                  : '#f5f5f7',
+                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
+              }}
+            >
+              <div className="flex gap-4">
+                {/* Icon inside box */}
+                <motion.div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
+                  style={{
+                    background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                    border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                  }}
+                  whileHover={{ rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Globe className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
+                </motion.div>
+                <div className="relative z-10 space-y-3">
+                  <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    Founded in 2020, Vulhunt started as India's first next-generation crowdsourced cybersecurity platform. It was also the world's first AI & ML-enabled platform delivering Bug Bounty and Vulnerability Disclosure Program (VDP) services.
+                  </p>
+                  <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    As customer requirements evolved, Vulhunt expanded into traditional cybersecurity consulting, compliance, and SOC services, while maintaining our crowdsourced security excellence.
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Team Cards */}
+          {/* Our Team & Community */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-            variants={containerVariants}
             initial="hidden"
             animate="visible"
+            variants={fadeInVariants}
+            transition={{ delay: 0.2 }}
           >
-            {/* Core Team Card */}
-            <motion.div
-              variants={fadeInVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`relative p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+            <h2
+              className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-500"
               style={{
-                background: isDarkMode 
-                  ? 'rgba(255, 255, 255, 0.03)' 
-                  : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-              onMouseEnter={(e) => {
-                if (!isDarkMode) {
-                  e.currentTarget.style.background = '#ffffff';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isDarkMode) {
-                  e.currentTarget.style.background = '#f5f5f7';
-                }
+                color: '#cc43fd',
+                fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                letterSpacing: '-0.02em',
               }}
             >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-2xl group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+              Our Team & Community
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Core Team Card */}
+              <motion.div
+                variants={fadeInVariants}
+                whileHover={{ scale: 1.02, y: -3 }}
+                className={`relative p-5 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #d654ff 100%)',
-                  opacity: isDarkMode ? 0 : 0.05,
+                  background: isDarkMode 
+                    ? 'rgba(255, 255, 255, 0.03)' 
+                    : '#f5f5f7',
+                  border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                  boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
                 }}
-              />
+                onMouseEnter={(e) => {
+                  if (!isDarkMode) {
+                    e.currentTarget.style.background = '#ffffff';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isDarkMode) {
+                    e.currentTarget.style.background = '#f5f5f7';
+                  }
+                }}
+              >
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <motion.div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center relative transition-all duration-500"
+                      style={{
+                        background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                        border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                      }}
+                      whileHover={{ rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Briefcase className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
+                    </motion.div>
+                    <h3
+                      className="text-xl sm:text-2xl font-bold"
+                      style={{
+                        color: '#cc43fd',
+                        fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                      }}
+                    >
+                      Core Team
+                    </h3>
+                  </div>
+                  <p className="text-base sm:text-lg font-medium transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    12+ seasoned cybersecurity professionals
+                  </p>
+                </div>
+              </motion.div>
 
-              <div className="relative z-10">
-                {/* Icon */}
-                <motion.div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 relative transition-all duration-500"
-                  style={{
-                    background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
-                    border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
-                  }}
-                  whileHover={{ rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Briefcase className="w-8 h-8" style={{ stroke: '#cc43fd' }} />
-                </motion.div>
-
-                <h3
-                  className="text-2xl sm:text-3xl font-bold mb-2"
-                  style={{
-                    color: '#cc43fd',
-                    fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                  }}
-                >
-                  Core Team
-                </h3>
-                <p className="text-lg sm:text-xl font-medium transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                  12+ seasoned cybersecurity professionals
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Security Researchers Card */}
-            <motion.div
-              variants={fadeInVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`relative p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
-              style={{
-                background: isDarkMode 
-                  ? 'rgba(255, 255, 255, 0.03)' 
-                  : '#f5f5f7',
-                border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
-                boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
-              }}
-              onMouseEnter={(e) => {
-                if (!isDarkMode) {
-                  e.currentTarget.style.background = '#ffffff';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isDarkMode) {
-                  e.currentTarget.style.background = '#f5f5f7';
-                }
-              }}
-            >
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 rounded-2xl group-hover:opacity-20 transition-opacity duration-300 blur-2xl"
+              {/* Security Researchers Card */}
+              <motion.div
+                variants={fadeInVariants}
+                whileHover={{ scale: 1.02, y: -3 }}
+                className={`relative p-5 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
-                  background: 'linear-gradient(135deg, #cc43fd 0%, #8722ec 100%)',
-                  opacity: isDarkMode ? 0 : 0.05,
+                  background: isDarkMode 
+                    ? 'rgba(255, 255, 255, 0.03)' 
+                    : '#f5f5f7',
+                  border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
+                  boxShadow: isDarkMode ? 'none' : '0 8px 24px rgba(204, 67, 253, 0.12)',
                 }}
-              />
-
-              <div className="relative z-10">
-                {/* Icon */}
-                <motion.div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 relative transition-all duration-500"
-                  style={{
-                    background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
-                    border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
-                  }}
-                  whileHover={{ rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Users className="w-8 h-8" style={{ stroke: '#cc43fd' }} />
-                </motion.div>
-
-                <h3
-                  className="text-2xl sm:text-3xl font-bold mb-2"
-                  style={{
-                    color: '#cc43fd',
-                    fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                  }}
-                >
-                  Security Researchers
-                </h3>
-                <p className="text-lg sm:text-xl font-medium transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                  1,400+ and growing globally
-                </p>
-              </div>
-            </motion.div>
+                onMouseEnter={(e) => {
+                  if (!isDarkMode) {
+                    e.currentTarget.style.background = '#ffffff';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isDarkMode) {
+                    e.currentTarget.style.background = '#f5f5f7';
+                  }
+                }}
+              >
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <motion.div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center relative transition-all duration-500"
+                      style={{
+                        background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                        border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                      }}
+                      whileHover={{ rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Users className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
+                    </motion.div>
+                    <h3
+                      className="text-xl sm:text-2xl font-bold"
+                      style={{
+                        color: '#cc43fd',
+                        fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                      }}
+                    >
+                      Security Researchers
+                    </h3>
+                  </div>
+                  <p className="text-base sm:text-lg font-medium transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    1,400+ and growing globally
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
+
+          {/* Bottom Decorative Line */}
+          <motion.div
+            className="mt-8 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+            style={{
+              background: isDarkMode 
+                ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+                : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+              opacity: isDarkMode ? 0.5 : 0.6,
+            }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+          />
         </div>
       </section>
 
@@ -655,6 +611,21 @@ export default function AboutUsPage() {
               );
             })}
           </motion.div>
+
+          {/* Bottom Decorative Line */}
+          <motion.div
+            className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+            style={{
+              background: isDarkMode 
+                ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+                : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+              opacity: isDarkMode ? 0.5 : 0.6,
+            }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+          />
         </div>
       </section>
 
@@ -725,6 +696,21 @@ export default function AboutUsPage() {
                 </Button>
               </a>
             </motion.div>
+
+            {/* Bottom Decorative Line */}
+            <motion.div
+              className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+              style={{
+                background: isDarkMode 
+                  ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+                  : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+                opacity: isDarkMode ? 0.5 : 0.6,
+              }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+            />
           </motion.div>
         </div>
       </section>
