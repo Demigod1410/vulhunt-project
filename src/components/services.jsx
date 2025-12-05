@@ -231,79 +231,86 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="relative z-10">
-                  {/* Icon Container */}
-                  <motion.div
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 relative"
-                    style={{
-                      background: isDarkMode 
-                        ? 'rgba(255, 255, 255, 0.05)' 
-                        : 'rgba(204, 67, 253, 0.08)',
-                      border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
-                    }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Icon
-                      className="w-10 h-10"
-                      style={{
-                        stroke: '#cc43fd',
-                      }}
-                    />
-                  </motion.div>
-
-                  {/* Category */}
-                  <h3
-                    className="text-2xl sm:text-3xl font-bold mb-4"
-                    style={{
-                      color: service.color,
-                      fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                    }}
-                  >
-                    {service.category}
-                  </h3>
-
-                  {/* Title */}
-                  <p
-                    className="text-lg sm:text-xl leading-relaxed font-medium mb-6 transition-colors duration-500"
-                    style={{
-                      fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                      color: isDarkMode ? '#d1d5db' : '#4a4a6a',
-                    }}
-                  >
-                    {service.title}
-                  </p>
-
-                  {/* Arrow Button */}
-                  <Link href="/services">
+                  {/* Icon and Category Row */}
+                  <div className="flex items-start gap-4 mb-4">
+                    {/* Icon Container */}
                     <motion.div
-                      className="inline-flex items-center gap-2 text-white font-semibold group/arrow cursor-pointer"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-xl relative mt-1"
+                      style={{
+                        background: isDarkMode 
+                          ? 'rgba(255, 255, 255, 0.05)' 
+                          : 'rgba(204, 67, 253, 0.08)',
+                        border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                      }}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
                     >
-                      <span
+                      <Icon
+                        className="w-7 h-7"
+                        style={{
+                          stroke: '#cc43fd',
+                        }}
+                      />
+                    </motion.div>
+
+                    <div className="flex-1">
+                      {/* Category */}
+                      <h3
+                        className="text-2xl sm:text-3xl font-bold mb-8"
                         style={{
                           color: service.color,
+                          fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                         }}
                       >
-                        Learn More
-                      </span>
+                        {service.category}
+                      </h3>
+
+                      {/* Title */}
+                      <p
+                        className="text-lg sm:text-xl leading-relaxed font-medium mb-6 transition-colors duration-500"
+                        style={{
+                          fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                          color: isDarkMode ? '#d1d5db' : '#4a4a6a',
+                        }}
+                      >
+                        {service.title}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Arrow Button */}
+                  <div className="ml-[4.5rem]">
+                    <Link href="/services">
                       <motion.div
-                        animate={{
-                          x: [0, 5, 0],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }}
+                        className="inline-flex items-center gap-2 text-white font-semibold group/arrow cursor-pointer"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <ArrowRight
-                          className="w-5 h-5"
-                          style={{ stroke: service.iconColor }}
-                        />
+                        <span
+                          style={{
+                            color: service.color,
+                          }}
+                        >
+                          Learn More
+                        </span>
+                        <motion.div
+                          animate={{
+                            x: [0, 5, 0],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          }}
+                        >
+                          <ArrowRight
+                            className="w-5 h-5"
+                            style={{ stroke: service.iconColor }}
+                          />
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Decorative Corner Elements */}
