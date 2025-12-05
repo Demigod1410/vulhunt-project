@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Shield, Users, Calendar, Handshake, Award, Briefcase, TrendingUp, Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 import { useTheme } from '@/contexts/ThemeContext';
 import Image from 'next/image';
 
@@ -53,7 +54,7 @@ export default function AboutUsPage() {
       name: 'SASOSS',
       role: 'Technology Partner',
       gradient: 'linear-gradient(135deg, #799dfe 0%, #8722ec 100%)',
-      logo: '/sasoss1.png',
+      logo: '/s2.png',
       scale: 1.5,
     },
     {
@@ -253,7 +254,7 @@ export default function AboutUsPage() {
             variants={fadeInVariants}
           >
             <h2
-              className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-500"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center transition-colors duration-500"
               style={{
                 color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -308,7 +309,7 @@ export default function AboutUsPage() {
             transition={{ delay: 0.1 }}
           >
             <h2
-              className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-500"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center transition-colors duration-500"
               style={{
                 color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -342,7 +343,7 @@ export default function AboutUsPage() {
                 </motion.div>
                 <div className="relative z-10 space-y-3">
                   <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                    Founded in 2020, Vulhunt started as India's first next-generation crowdsourced cybersecurity platform. It was also the world's first AI & ML-enabled platform delivering Bug Bounty and Vulnerability Disclosure Program (VDP) services.
+                    Founded in 2020, Vulhunt started as India's first next-generation crowdsourced cybersecurity platform. It was also the world's first AI & ML enabled platform delivering Bug Bounty and Vulnerability Disclosure Program (VDP) services.
                   </p>
                   <p className="text-sm sm:text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                     As customer requirements evolved, Vulhunt expanded into traditional cybersecurity consulting, compliance, and SOC services, while maintaining our crowdsourced security excellence.
@@ -360,7 +361,7 @@ export default function AboutUsPage() {
             transition={{ delay: 0.2 }}
           >
             <h2
-              className="text-2xl sm:text-3xl font-bold mb-3 transition-colors duration-500"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center transition-colors duration-500"
               style={{
                 color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -478,7 +479,7 @@ export default function AboutUsPage() {
 
           {/* Bottom Decorative Line */}
           <motion.div
-            className="mt-8 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+            className="mt-8 mx-auto max-w-md h-1 px-4 mt-30 rounded-full transition-all duration-500"
             style={{
               background: isDarkMode 
                 ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
@@ -504,19 +505,14 @@ export default function AboutUsPage() {
             variants={titleVariants}
           >
             <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 text-center"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center transition-colors duration-500"
               style={{
+                color: '#cc43fd',
                 fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                 letterSpacing: '-0.02em',
               }}
             >
-              <span
-                style={{
-                  color: '#cc43fd',
-                }}
-              >
-                Partners
-              </span>
+              Partners
             </h2>
           </motion.div>
 
@@ -533,7 +529,7 @@ export default function AboutUsPage() {
                   key={index}
                   variants={fadeInVariants}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`relative p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+                  className={`relative p-6 lg:p-8 rounded-2xl transition-all duration-500 group ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                   style={{
                     background: isDarkMode 
                       ? 'rgba(255, 255, 255, 0.03)' 
@@ -561,14 +557,14 @@ export default function AboutUsPage() {
                     }}
                   />
 
-                  <div className="relative z-10 flex items-start gap-6">
-                    {/* Logo */}
+                  <div className="relative z-10 flex flex-col items-center text-center gap-4">
+                    {/* Logo - Rectangle */}
                     <motion.div
-                      className="flex-shrink-0 w-40 h-40 rounded-xl flex items-center justify-center relative overflow-hidden transition-all duration-500"
+                      className="flex-shrink-0 w-64 h-32 rounded-xl flex items-center justify-center relative overflow-hidden transition-all duration-500"
                       style={{
                         background: isDarkMode ? 'rgba(255, 255, 255, 0.95)' : '#ffffff',
                         border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
-                        padding: '20px',
+                        padding: '16px',
                       }}
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
@@ -576,37 +572,19 @@ export default function AboutUsPage() {
                       <Image
                         src={partner.logo}
                         alt={`${partner.name} logo`}
-                        width={160}
-                        height={160}
+                        width={240}
+                        height={120}
                         className="object-contain w-full h-full"
                       />
                     </motion.div>
 
-                    {/* Content */}
-                    <div className="flex-1">
-                      <h3
-                        className="text-2xl sm:text-3xl font-bold mb-2"
-                        style={{
-                          color: '#cc43fd',
-                          fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
-                        }}
-                      >
-                        {partner.name}
-                      </h3>
-                      <p className="text-base sm:text-lg transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    {/* Description only */}
+                    <div>
+                      <p className="text-lg sm:text-xl lg:text-2xl font-semibold transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                         {partner.role}
                       </p>
                     </div>
                   </div>
-
-                  {/* Decorative Corner Element */}
-                  <div
-                    className="absolute top-4 right-4 w-2 h-2 rounded-full"
-                    style={{
-                      background: '#cc43fd',
-                      opacity: 0.5,
-                    }}
-                  />
                 </motion.div>
               );
             })}
@@ -614,7 +592,7 @@ export default function AboutUsPage() {
 
           {/* Bottom Decorative Line */}
           <motion.div
-            className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+            className="mt-16 mx-auto max-w-md h-1 mt-30 rounded-full transition-all duration-500"
             style={{
               background: isDarkMode 
                 ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
@@ -645,7 +623,7 @@ export default function AboutUsPage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Join Us in{' '}
+              Connect Us in{' '}
               <span
                 style={{
                   color: '#cc43fd',
@@ -714,6 +692,9 @@ export default function AboutUsPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Bottom Fade */}
       <div
