@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import LogoLoop from './LogoLoop';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useEffect, useState } from 'react';
@@ -69,6 +70,22 @@ const Partners = () => {
             ariaLabel="Partner companies"
           />
         </div>
+
+        {/* Bottom Decorative Line */}
+        <motion.div
+          className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+          style={{
+            background: isDarkMode 
+              ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+              : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+            opacity: isDarkMode ? 0.5 : 0.6,
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        />
+        
       </div>
     </section>
   );
