@@ -55,7 +55,7 @@ const Partners = () => {
           </p>
         </div>
 
-        <div className="relative flex justify-center w-full" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
+        <div className="relative flex justify-center items-center w-full py-12" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
           <LogoLoop
             logos={partnerLogos}
             speed={isLowEnd ? 60 : 120} // Slower on low-end
