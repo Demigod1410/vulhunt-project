@@ -9,6 +9,38 @@ import Image from 'next/image';
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
   const { isDarkMode } = useTheme();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contactNumber: '',
+    company: '',
+    message: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Create mailto link with form data
+    const subject = `Contact Form: Inquiry from ${formData.name}`;
+    const body = `Name: ${formData.name}
+Email: ${formData.email}
+Contact Number: ${formData.contactNumber}
+Company: ${formData.company}
+
+Message:
+${formData.message}`;
+    
+    const mailtoLink = `mailto:business@vulhunt.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
 
   // Custom X/Twitter Icon Component
   const XIcon = ({ className, style }) => (
@@ -315,11 +347,14 @@ const Footer = () => {
               Contact Form
             </h3>
             
-            <form className="flex flex-col space-y-4 w-full flex-1">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full flex-1">
               <div className="grid grid-cols-2 gap-3 w-full">
                 <div className="w-full">
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="Name"
                     className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
                     style={{
@@ -341,6 +376,9 @@ const Footer = () => {
                 <div className="w-full">
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="Email"
                     className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
                     style={{
@@ -364,6 +402,9 @@ const Footer = () => {
                 <div className="w-full">
                   <input
                     type="tel"
+                    name="contactNumber"
+                    value={formData.contactNumber}
+                    onChange={handleInputChange}
                     placeholder="Contact Number"
                     className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
                     style={{
@@ -385,6 +426,9 @@ const Footer = () => {
                 <div className="w-full">
                   <input
                     type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
                     placeholder="Company"
                     className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
                     style={{
@@ -406,6 +450,9 @@ const Footer = () => {
 
               <div className="w-full flex-1">
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Tell us about your inquiry or message"
                   rows={6}
                   className="w-full h-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2 resize-none"
