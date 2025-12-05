@@ -2,10 +2,25 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Mail, Globe, Send, User, Phone, Building2, MessageSquare } from 'lucide-react';
+import { Mail, Globe, Send, User, Phone, Building2, MessageCircle, Linkedin, Facebook } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 import { useTheme } from '@/contexts/ThemeContext';
+import Image from 'next/image';
+
+// Custom X/Twitter Icon Component
+const XIcon = ({ className, style }) => (
+  <div className={className} style={style}>
+    <Image
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAC+ElEQVR4AYyV0XUbMQwEB65E6cSuJHIlciqRXImUSqxOkFnwdPJLfsJHENgFuEfyeNIL/9lq6ta4wm9xiB0alCaneIKYKP1byMQz0MnNuDC9mKFD7TCBJvdSTohNERyEB6oO7LGFgmcProFrNAyVekNCBmsvmnphx36a+3JVX6JlXWfjvZezH4vJ3CQKXqW/xj9IwGNxLG31zy5uwg+LdfyAPlK8YiuDdiltjDGrvYqv0m/C25Mm4uV86WHrbtG7xUe9gmL4MD7jtiOs33rHH6CuwLt200arJiDiFlWQXhWoO/Cr4Jzt6z/F4U761SUpDror1R/ABVtr8ow3XscSZKXY3slfHO/auUHhysqOQIzMria7MccvtjYSThgoWOIPhIzxllewI/YqFZF3sydjj4JrG/h+3nAwhMo+2Zu1OZYHnvINJNUKloKVFYaf3VB8aXmAwqE7A+TeZ9pCA/eV11azcoJKZSvYeVHbA/qd5k7XnDF/t34SZbiLP/jRNJFHpwDKM+0cTY4ouxFz3FaPnkdb9Qu1bhOvvaa7pNO3M6xWkKz0hNfRQuPWOIuhHbcpXQZ2memKBzWTGCrVCTbfHJxzZLVzduQDPpGXOiHYj7SdY2dafXuhSVjIv+1s6i795jLyIk90DWauZucLNXx2F4P3P+L7o4AtLsPVr8uRTzuCXk+OVZ13EPw8HlbLVBczwGMZ7xA6ZtiaXyh+hUYR1k2/yV2cvM4bPl1lHnLaZk5RhurKygEz6/V1QmxHqfy+eM9FAsdtX+XPQUUwD7g3zG7MZzePGn1v4magSLM4Rfnss+KbeJ3WpDO0wv0UzL33unZ2ummsCUS8Jm6fpXiEc84jXKaYCQbOJm15H8AHVFZ/ddc/yTWlg5kpEHGry0iz5zaMsMzcOip5LTMmtipJz9tV5YPymIi5m/qdVMri/ZvTZW6syNu/8b2Fj2Vn8Z1hCrL61PsTwYWqiw/THCnS5m8uQWzmLT5wsxCbxcnGxQzZdFTsPXzk/gAAAP//vcTp+QAAAAZJREFUAwD7qwVJQF9FOAAAAABJRU5ErkJggg=="
+      alt="X"
+      width={20}
+      height={20}
+      style={{ filter: style?.stroke ? `brightness(0) saturate(100%) invert(58%) sepia(85%) saturate(6472%) hue-rotate(261deg) brightness(101%) contrast(101%)` : 'none' }}
+    />
+  </div>
+);
 
 export default function ContactPage() {
   const { isDarkMode } = useTheme();
@@ -32,9 +47,26 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    
+    // Create mailto link with form data
+    const subject = `Contact Form: Inquiry from ${formData.name}`;
+    const body = `Name: ${formData.name}
+Email: ${formData.email}
+Contact Number: ${formData.contactNumber}
+Company: ${formData.company}
+
+Message:
+${formData.message}`;
+    
+    const mailtoLink = `mailto:business@vulhunt.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
   };
+
+  const socialLinks = [
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/vulhunt-cybercosmous/', label: 'LinkedIn' },
+    { icon: XIcon, href: 'https://x.com/vulhunt', label: 'X', isCustom: true },
+    { icon: Facebook, href: 'https://www.facebook.com/Vulhunt', label: 'Facebook' },
+  ];
 
   // Fixed particle positions to avoid hydration mismatch
   const particlePositions = [
@@ -360,7 +392,7 @@ export default function ContactPage() {
                     {/* Inquiry Type / Message Field */}
                     <div>
                       <label htmlFor="message" className="block text-sm font-semibold mb-3 flex items-center gap-2 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                        <MessageSquare className="w-4 h-4" style={{ stroke: '#cc43fd' }} />
+                        <MessageCircle className="w-4 h-4" style={{ stroke: '#cc43fd' }} />
                         Inquiry Type / Message
                       </label>
                       <textarea
@@ -542,9 +574,67 @@ export default function ContactPage() {
                         borderColor: `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                       }}
                     >
-                      <p className="text-sm leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>
+                      <p className="text-sm leading-relaxed transition-colors duration-500 mb-6" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>
                         Our team typically responds within 24-48 hours during business days.
                       </p>
+
+                      {/* Social Links */}
+                      <div>
+                        <p 
+                          className="text-2xl sm:text-3xl font-bold mb-4"
+                          style={{
+                            color: '#cc43fd',
+                            fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
+                          }}
+                        >
+                          Follow Us
+                        </p>
+                        <div className="space-y-4">
+                          {socialLinks.map((social, index) => {
+                            const Icon = social.icon;
+                            return (
+                              <motion.a
+                                key={index}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={social.label}
+                                className="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300"
+                                style={{
+                                  background: 'rgba(255, 255, 255, 0.02)',
+                                  border: '1px solid rgba(204, 67, 253, 0.1)',
+                                }}
+                                whileHover={{ x: 5 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <motion.div
+                                  className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
+                                  style={{
+                                    background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
+                                    border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
+                                  }}
+                                  whileHover={{ rotate: 5 }}
+                                >
+                                  {social.isCustom ? (
+                                    <Icon style={{ stroke: '#cc43fd' }} />
+                                  ) : (
+                                    <Icon className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
+                                  )}
+                                </motion.div>
+                                <div className="flex-1">
+                                  <p className="text-sm mb-1 font-bold transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>{social.label}</p>
+                                  <p 
+                                    className="text-base transition-colors duration-500 break-all"
+                                    style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}
+                                  >
+                                    {social.href.replace('https://', '').replace('www.', '')}
+                                  </p>
+                                </div>
+                              </motion.a>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </motion.div>
                   </div>
                 </div>
@@ -567,6 +657,9 @@ export default function ContactPage() {
           transition={{ duration: 1.5, ease: 'easeOut' }}
         />
       </section>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Bottom Fade */}
       <div
