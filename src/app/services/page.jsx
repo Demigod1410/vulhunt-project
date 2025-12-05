@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Target, Shield, Users, Lock, FileCheck, UserCog, Bot, CheckCircle, DollarSign, Award, TrendingDown } from 'lucide-react';
+import { Target, Shield, Users, Lock, FileCheck, UserCog, Bot, CheckCircle, CircleDollarSign, Award, TrendingDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 import { useTheme } from '@/contexts/ThemeContext';
 
 
@@ -252,23 +253,9 @@ export default function ServicesPage() {
                     <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Vulhunt's bug bounty programs are results-oriented security testing initiatives. These programs are best suited for organizations preferring to provide financial rewards to security researchers for discovering quality vulnerabilities. The clients are charged only for the vulnerabilities reported as per the agreed price for severity.
                     </p>
-
-                    {/* Pricing Example Box */}
-                    <div
-                      className="p-6 rounded-2xl mb-6 transition-all duration-500"
-                      style={{
-                        background: isDarkMode ? 'rgba(204, 67, 253, 0.05)' : 'rgba(204, 67, 253, 0.08)',
-                        border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
-                      }}
-                    >
-                      <h4 className="text-xl font-bold mb-4 flex items-center gap-2 transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>
-                        <DollarSign className="w-6 h-6" style={{ stroke: '#cc43fd' }} />
-                        Pricing Example:
-                      </h4>
-                      <p className="text-lg transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                        P5 (Low Severity) – $25 × 5 vulnerabilities = <span className="font-bold transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>$125</span>
-                      </p>
-                    </div>
+                    <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                      <span className="font-bold transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>Pricing Example:</span> P5 (Low Severity) – $25 × 5 vulnerabilities = <span className="font-bold transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>$125</span>
+                    </p>
 
                     {/* Key Benefit */}
                     <div className="flex items-start gap-3">
@@ -469,7 +456,7 @@ export default function ServicesPage() {
 
                     {/* Standards List */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
-                      {['ISO 27001', 'ISO 22301', 'PCI DSS', 'COBIT', 'SOC 2 Type II'].map((standard, idx) => (
+                      {['ISO 27001', 'ISO 22301', 'PCI DSS', 'COBIT', 'SOC 2 Type II', 'DPDPA  /  GDPR  /  CCPA'].map((standard, idx) => (
                         <div
                           key={idx}
                           className="p-3 rounded-xl text-center transition-all duration-500"
@@ -564,13 +551,13 @@ export default function ServicesPage() {
                       4. SOC Automation & Tool Consulting
                     </h3>
                     <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
-                      AI & ML-powered solutions for SOC automation, compliance, and governance.
+                      AI & ML powered solutions for SOC automation, compliance, and governance.
                     </p>
 
                     {/* Benefits List */}
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
-                        <TrendingDown className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
+                        <CircleDollarSign className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
                         <p className="text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                           Reduce cybersecurity management costs by 20%–45%
                         </p>
@@ -587,6 +574,17 @@ export default function ServicesPage() {
               </div>
             </div>
           </motion.div>
+          {/* Decorative Divider */}
+          <motion.div
+            className="my-20 mx-auto max-w-lg h-1 rounded-full"
+            style={{
+              background: 'linear-gradient(90deg, transparent, #8722ec, #cc43fd, #d654ff, transparent)',
+            }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 0.5 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+          />
         </div>
       </section>
 
@@ -648,7 +646,7 @@ export default function ServicesPage() {
                     e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
                   }}
                 >
-                  Get a Free Demo
+                  Connect with Us
                   <motion.span
                     className="ml-2 inline-block"
                     animate={{ x: [0, 5, 0] }}
@@ -659,9 +657,28 @@ export default function ServicesPage() {
                 </Button>
               </a>
             </motion.div>
+            {/* Bottom Decorative Line */}
+            <motion.div
+              className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+              style={{
+                background: isDarkMode 
+                  ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
+                  : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
+                opacity: isDarkMode ? 0.5 : 0.6,
+              }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+            />
           </motion.div>
+          
+          
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Bottom Fade */}
       <div
