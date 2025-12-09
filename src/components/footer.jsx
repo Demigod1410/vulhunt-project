@@ -9,6 +9,8 @@ import Image from 'next/image';
 const Footer = () => {
   const [mounted, setMounted] = useState(false);
   const { isDarkMode } = useTheme();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,21 +27,40 @@ const Footer = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
     
-    // Create mailto link with form data
-    const subject = `Contact Form: Inquiry from ${formData.name}`;
-    const body = `Name: ${formData.name}
-Email: ${formData.email}
-Contact Number: ${formData.contactNumber}
-Company: ${formData.company}
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-Message:
-${formData.message}`;
-    
-    const mailtoLink = `mailto:business@vulhunt.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Message sent successfully!' });
+        setFormData({
+          name: '',
+          email: '',
+          contactNumber: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Failed to send message.' });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({ type: 'error', message: 'Failed to send message.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Custom X/Twitter Icon Component
@@ -218,7 +239,7 @@ ${formData.message}`;
               {/* Contact Info */}
               <div className="space-y-3 pt-2">
                 <motion.a
-                  href="mailto:business@vulhunt.in"
+                  href="mailto:vulhunt1@gmail.com"
                   className="flex items-center gap-3 transition-colors duration-500 group"
                   style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
                   whileHover={{ x: 5 }}
@@ -226,7 +247,7 @@ ${formData.message}`;
                   onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#1a1a2e'}
                 >
                   <Mail className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
-                  <span className="text-base">business@vulhunt.in</span>
+                  <span className="text-base">vulhunt1@gmail.com</span>
                 </motion.a>
                 <motion.a
                   href="https://www.vulhunt.com"
@@ -472,26 +493,50 @@ ${formData.message}`;
                 />
               </div>
 
+              {/* Status Message */}
+              {submitStatus && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-3 rounded-lg text-xs"
+                  style={{
+                    background: submitStatus.type === 'success' 
+                      ? 'rgba(34, 197, 94, 0.1)' 
+                      : 'rgba(239, 68, 68, 0.1)',
+                    border: `1px solid ${submitStatus.type === 'success' ? '#22c55e' : '#ef4444'}`,
+                    color: submitStatus.type === 'success' ? '#22c55e' : '#ef4444',
+                  }}
+                >
+                  {submitStatus.message}
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300"
                 style={{
-                  background: '#cc43fd',
+                  background: isSubmitting ? '#9ca3af' : '#cc43fd',
                   color: 'white',
                   border: 'none',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#d654ff';
-                  e.currentTarget.style.boxShadow = '0 0 20px rgba(204, 67, 253, 0.4)';
+                  if (!isSubmitting) {
+                    e.currentTarget.style.background = '#d654ff';
+                    e.currentTarget.style.boxShadow = '0 0 20px rgba(204, 67, 253, 0.4)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#cc43fd';
-                  e.currentTarget.style.boxShadow = 'none';
+                  if (!isSubmitting) {
+                    e.currentTarget.style.background = '#cc43fd';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }
                 }}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
 
