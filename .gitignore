@@ -41,3 +41,4 @@ yarn-error.log*
 next-env.d.ts
 src/app/page.js
 out_v.zip
+DEPLOYMENT.md

@@ -53,7 +53,8 @@ export default function ContactPage() {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch('/api/contact', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://vulhunt-api.vercel.app';
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
