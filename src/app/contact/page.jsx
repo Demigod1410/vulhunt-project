@@ -25,6 +25,8 @@ const XIcon = ({ className, style }) => (
 export default function ContactPage() {
   const { isDarkMode } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,21 +47,40 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
     
-    // Create mailto link with form data
-    const subject = `Contact Form: Inquiry from ${formData.name}`;
-    const body = `Name: ${formData.name}
-Email: ${formData.email}
-Contact Number: ${formData.contactNumber}
-Company: ${formData.company}
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-Message:
-${formData.message}`;
-    
-    const mailtoLink = `mailto:business@vulhunt.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Message sent successfully! We\'ll get back to you soon.' });
+        setFormData({
+          name: '',
+          email: '',
+          contactNumber: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || 'Failed to send message. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
@@ -420,6 +441,25 @@ ${formData.message}`;
                       />
                     </div>
 
+                    {/* Status Message */}
+                    {submitStatus && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 rounded-xl"
+                        style={{
+                          background: submitStatus.type === 'success' 
+                            ? 'rgba(34, 197, 94, 0.1)' 
+                            : 'rgba(239, 68, 68, 0.1)',
+                          border: `1px solid ${submitStatus.type === 'success' ? '#22c55e' : '#ef4444'}`,
+                        }}
+                      >
+                        <p style={{ color: submitStatus.type === 'success' ? '#22c55e' : '#ef4444' }}>
+                          {submitStatus.message}
+                        </p>
+                      </motion.div>
+                    )}
+
                     {/* Submit Button */}
                     <motion.div
                       whileHover={{ scale: 1.02 }}
@@ -428,23 +468,29 @@ ${formData.message}`;
                       <Button
                         type="submit"
                         size="lg"
+                        disabled={isSubmitting}
                         className="w-full sm:w-auto px-8 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-500 shadow-xl"
                         style={{
-                          background: '#cc43fd',
+                          background: isSubmitting ? '#9ca3af' : '#cc43fd',
                           color: 'white',
                           border: 'none',
+                          cursor: isSubmitting ? 'not-allowed' : 'pointer',
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = '#d654ff';
-                          e.currentTarget.style.boxShadow = '0 0 40px rgba(204, 67, 253, 0.6)';
+                          if (!isSubmitting) {
+                            e.currentTarget.style.background = '#d654ff';
+                            e.currentTarget.style.boxShadow = '0 0 40px rgba(204, 67, 253, 0.6)';
+                          }
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background = '#cc43fd';
-                          e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+                          if (!isSubmitting) {
+                            e.currentTarget.style.background = '#cc43fd';
+                            e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+                          }
                         }}
                       >
                         <Send className="w-5 h-5 mr-2 inline-block" />
-                        Send Message
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
                       </Button>
                     </motion.div>
                   </form>
@@ -516,13 +562,13 @@ ${formData.message}`;
                         <div className="flex-1">
                           <p className="text-sm mb-1 font-semibold transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>Mail</p>
                           <a 
-                            href="mailto:business@vulhunt.in"
+                            href="mailto:vulhunt1@gmail.com"
                             className="text-base transition-colors duration-500 break-all"
                             style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}
                             onMouseEnter={(e) => e.currentTarget.style.color = '#cc43fd'}
                             onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#1a1a2e'}
                           >
-                            business@vulhunt.in
+                            vulhunt1@gmail.com
                           </a>
                         </div>
                       </div>
