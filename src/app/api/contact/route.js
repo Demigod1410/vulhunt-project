@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
@@ -6,7 +7,7 @@ export async function POST(request) {
     
     // Validate required fields
     if (!body.name || !body.email || !body.contactNumber || !body.company || !body.message) {
-      return Response.json({ error: 'All fields are required' }, { status: 400 });
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
     // Create transporter
@@ -50,14 +51,14 @@ export async function POST(request) {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    return Response.json({ 
+    return NextResponse.json({ 
       success: true, 
       message: 'Email sent successfully' 
     });
 
   } catch (error) {
     console.error('Error sending email:', error);
-    return Response.json({ 
+    return NextResponse.json({ 
       error: 'Failed to send email',
       details: error.message 
     }, { status: 500 });
