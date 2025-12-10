@@ -240,7 +240,7 @@ const Footer = () => {
               {/* Contact Info */}
               <div className="space-y-3 pt-2">
                 <motion.a
-                  href="mailto:vulhunt1@gmail.com"
+                  href="mailto:business@vulhunt.in"
                   className="flex items-center gap-3 transition-colors duration-500 group"
                   style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
                   whileHover={{ x: 5 }}
@@ -248,7 +248,7 @@ const Footer = () => {
                   onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#1a1a2e'}
                 >
                   <Mail className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
-                  <span className="text-base">vulhunt1@gmail.com</span>
+                  <span className="text-base">business@vulhunt.in</span>
                 </motion.a>
                 <motion.a
                   href="https://www.vulhunt.com"
