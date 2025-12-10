@@ -7,7 +7,14 @@ export async function POST(request) {
     
     // Validate required fields
     if (!body.name || !body.email || !body.contactNumber || !body.company || !body.message) {
-      return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
+      return NextResponse.json({ error: 'All fields are required' }, { 
+        status: 400,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        }
+      });
     }
 
     // Create transporter
@@ -54,6 +61,12 @@ export async function POST(request) {
     return NextResponse.json({ 
       success: true, 
       message: 'Email sent successfully' 
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
     });
 
   } catch (error) {
@@ -61,6 +74,24 @@ export async function POST(request) {
     return NextResponse.json({ 
       error: 'Failed to send email',
       details: error.message 
-    }, { status: 500 });
+    }, { 
+      status: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+    });
   }
+}
+
+// Handle preflight OPTIONS request
+export async function OPTIONS(request) {
+  return NextResponse.json({}, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+  });
 }

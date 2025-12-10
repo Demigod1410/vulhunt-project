@@ -53,7 +53,7 @@ export default function ContactPage() {
     setSubmitStatus(null);
     
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://vulhunt.vercel.app/';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://vulhunt.vercel.app';
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
@@ -563,13 +563,13 @@ export default function ContactPage() {
                         <div className="flex-1">
                           <p className="text-sm mb-1 font-semibold transition-colors duration-500" style={{ color: isDarkMode ? '#9ca3af' : '#5a5a7a' }}>Mail</p>
                           <a 
-                            href="mailto:vulhunt1@gmail.com"
+                            href="mailto:business@vulhunt.in"
                             className="text-base transition-colors duration-500 break-all"
                             style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}
                             onMouseEnter={(e) => e.currentTarget.style.color = '#cc43fd'}
                             onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#1a1a2e'}
                           >
-                            vulhunt1@gmail.com
+                            business@vulhunt.in
                           </a>
                         </div>
                       </div>
