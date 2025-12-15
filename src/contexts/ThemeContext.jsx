@@ -8,6 +8,7 @@ const ThemeContext = createContext({
 });
 
 export function ThemeProvider({ children }) {
+  // Initialize with default dark mode to prevent flash
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [mounted, setMounted] = useState(false);
 
@@ -35,11 +36,6 @@ export function ThemeProvider({ children }) {
     document.documentElement.classList.toggle('dark', newTheme);
     document.documentElement.classList.toggle('light', !newTheme);
   };
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
