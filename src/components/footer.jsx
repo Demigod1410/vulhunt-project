@@ -131,70 +131,27 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 pb-8 transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
-      {/* Animated Background Effects */}
+      {/* Static Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle Gradient Glow */}
-        <motion.div
+        <div
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
               : 'radial-gradient(circle, rgba(204, 67, 253, 0.1) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.1 : 0.2,
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: isDarkMode ? [0.1, 0.15, 0.1] : [0.2, 0.25, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            opacity: isDarkMode ? 0.13 : 0.23,
           }}
         />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-10"
+        <div
+          className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)'
               : 'radial-gradient(circle, rgba(135, 34, 236, 0.12) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.1 : 0.22,
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: isDarkMode ? [0.1, 0.12, 0.1] : [0.22, 0.28, 0.22],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
+            opacity: isDarkMode ? 0.11 : 0.25,
           }}
         />
-
-        {/* Particle Effect */}
-        <div className="absolute inset-0">
-          {mounted && particlePositions.map((pos, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-0.5 h-0.5 rounded-full"
-              style={{
-                background: isDarkMode ? '#cc43fd' : '#8722ec',
-                left: pos.left,
-                top: pos.top,
-              }}
-              animate={{
-                opacity: isDarkMode ? [0, 0.4, 0] : [0, 0.3, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 4 + (i % 3),
-                repeat: Infinity,
-                delay: i * 0.4,
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
