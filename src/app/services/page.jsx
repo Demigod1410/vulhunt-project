@@ -8,6 +8,8 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { useTheme } from '@/contexts/ThemeContext';
 
+// Note: Client components can't export metadata directly
+// Metadata should be in a layout.js or page.js (not .jsx) file
 
 export default function ServicesPage() {
   const { isDarkMode } = useTheme();
