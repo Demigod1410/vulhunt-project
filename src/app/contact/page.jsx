@@ -152,65 +152,24 @@ export default function ContactPage() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 pt-32">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
+          <div
             className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-500"
             style={{
               background: isDarkMode 
                 ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)'
                 : 'radial-gradient(circle, rgba(135, 34, 236, 0.15) 0%, transparent 70%)',
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: isDarkMode ? [0.2, 0.3, 0.2] : [0.3, 0.4, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: 'easeInOut',
+              opacity: isDarkMode ? 0.25 : 0.35,
             }}
           />
-          <motion.div
+          <div
             className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-500"
             style={{
               background: isDarkMode 
                 ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
                 : 'radial-gradient(circle, rgba(204, 67, 253, 0.12) 0%, transparent 70%)',
-            }}
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: isDarkMode ? [0.2, 0.25, 0.2] : [0.25, 0.35, 0.25],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: 1,
+              opacity: isDarkMode ? 0.22 : 0.3,
             }}
           />
-
-          {/* Particles */}
-          <div className="absolute inset-0">
-            {mounted && particlePositions.map((pos, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 rounded-full transition-colors duration-500"
-                style={{
-                  background: isDarkMode ? '#cc43fd' : '#8722ec',
-                  left: pos.left,
-                  top: pos.top,
-                }}
-                animate={{
-                  opacity: isDarkMode ? [0, 0.6, 0] : [0, 0.4, 0],
-                  scale: [0, 1, 0],
-                }}
-                transition={{
-                  duration: 3 + (i % 3),
-                  repeat: Infinity,
-                  delay: i * 0.15,
-                }}
-              />
-            ))}
-          </div>
         </div>
 
         {/* Hero Content */}
