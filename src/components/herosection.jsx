@@ -1,18 +1,19 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { useEffect, useState } from 'react';
-import Threads from './Threads';
 import { useTheme } from '@/contexts/ThemeContext';
 
-const HeroSection = () => {
-  const [mounted, setMounted] = useState(false);
-  const { isDarkMode } = useTheme();
+// Lazy load WebGL component to improve FCP
+const Threads = dynamic(() => import('./Threads'), {
+  ssr: false,
+  loading: () => null,
+});
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+const HeroSection = () => {
+  const { isDarkMode } = useTheme();
 
   const stats = [
     { value: '82+', label: 'Projects' },
@@ -26,8 +27,8 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0,
       },
     },
   };
@@ -38,7 +39,7 @@ const HeroSection = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: 'easeOut',
       },
     },
@@ -50,7 +51,7 @@ const HeroSection = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: 'easeOut',
       },
     },
@@ -61,6 +62,8 @@ const HeroSection = () => {
       id="home" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-30 lg:pt-2 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#ffffffff' }}
+      aria-label="Hero section"
+      role="banner"
     >
       {/* Threads Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -74,54 +77,32 @@ const HeroSection = () => {
       
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Radial Gradient Glow */}
-        <motion.div
+        {/* Radial Gradient Glow - Static */}
+        <div
           className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)' 
               : 'radial-gradient(circle, rgba(135, 34, 236, 0.15) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.2 : 0.3,
-            willChange: 'transform, opacity',
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: isDarkMode ? [0.2, 0.3, 0.2] : [0.3, 0.4, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            opacity: isDarkMode ? 0.25 : 0.35,
           }}
         />
-        <motion.div
+        <div
           className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)' 
               : 'radial-gradient(circle, rgba(204, 67, 253, 0.2) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.2 : 0.35,
-            willChange: 'transform, opacity',
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: isDarkMode ? [0.2, 0.25, 0.2] : [0.35, 0.45, 0.35],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
+            opacity: isDarkMode ? 0.22 : 0.4,
           }}
         />
-
       </div>
 
       {/* Main Content */}
       <motion.div
         className="relative z-10 max-w-6xl mx-auto text-center"
         variants={containerVariants}
-        initial="hidden"
+        initial="visible"
         animate="visible"
       >
         {/* Headline */}
@@ -132,6 +113,7 @@ const HeroSection = () => {
             fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
             letterSpacing: '-0.02em',
             color: isDarkMode ? 'white' : '#1a1a2e',
+            fontDisplay: 'swap',
           }}
         >
           Next-Gen Cybersecurity
