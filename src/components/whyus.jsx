@@ -98,68 +98,25 @@ const WhyUs = () => {
     >
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Radial Gradient Glow */}
-        <motion.div
+        {/* Radial Gradient Glow - Static */}
+        <div
           className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)' 
               : 'radial-gradient(circle, rgba(135, 34, 236, 0.15) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.15 : 0.3,
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: isDarkMode ? [0.15, 0.25, 0.15] : [0.3, 0.4, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            opacity: isDarkMode ? 0.2 : 0.35,
           }}
         />
-        <motion.div
+        <div
           className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)' 
               : 'radial-gradient(circle, rgba(204, 67, 253, 0.2) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.15 : 0.35,
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: isDarkMode ? [0.15, 0.2, 0.15] : [0.35, 0.45, 0.35],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
+            opacity: isDarkMode ? 0.18 : 0.4,
           }}
         />
-
-        {/* Particle Effect */}
-        <div className="absolute inset-0">
-          {mounted && particlePositions.map((pos, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full"
-              style={{
-                background: isDarkMode ? '#cc43fd' : '#8722ec',
-                left: pos.left,
-                top: pos.top,
-              }}
-              animate={{
-                opacity: isDarkMode ? [0, 0.5, 0] : [0, 0.4, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 4 + (i % 3),
-                repeat: Infinity,
-                delay: i * 0.33,
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Main Content */}
