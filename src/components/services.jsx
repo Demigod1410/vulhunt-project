@@ -90,68 +90,25 @@ const Services = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Radial Gradient Glow */}
-        <motion.div
+        {/* Radial Gradient Glow - Static */}
+        <div
           className="absolute top-1/4 left-1/3 w-[600px] h-[600px] rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
               : 'radial-gradient(circle, rgba(204, 67, 253, 0.15) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.15 : 0.3,
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            opacity: isDarkMode ? 0.2 : 0.35,
           }}
         />
-        <motion.div
+        <div
           className="absolute bottom-1/4 right-1/3 w-[600px] h-[600px] rounded-full blur-3xl"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
               : 'radial-gradient(circle, rgba(204, 67, 253, 0.2) 0%, transparent 70%)',
-            opacity: isDarkMode ? 0.15 : 0.35,
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: isDarkMode ? [0.15, 0.2, 0.15] : [0.35, 0.45, 0.35],
-          }}
-          transition={{
-            duration: 11,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1.5,
+            opacity: isDarkMode ? 0.18 : 0.4,
           }}
         />
-
-        {/* Particle Effect */}
-        <div className="absolute inset-0">
-          {mounted && particlePositions.map((pos, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full"
-              style={{
-                background: isDarkMode ? '#cc43fd' : '#8722ec',
-                left: pos.left,
-                top: pos.top,
-              }}
-              animate={{
-                opacity: isDarkMode ? [0, 0.6, 0] : [0, 0.4, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3.5 + (i % 3),
-                repeat: Infinity,
-                delay: i * 0.3,
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Main Content */}
@@ -280,7 +237,10 @@ const Services = () => {
 
                   {/* Arrow Button */}
                   <div className="ml-[4.5rem]">
-                    <Link href="/services">
+                    <Link 
+                      href="/services"
+                      aria-label={`Learn more about ${service.category}`}
+                    >
                       <motion.div
                         className="inline-flex items-center gap-2 text-white font-semibold group/arrow cursor-pointer"
                         whileHover={{ x: 5 }}
@@ -291,7 +251,10 @@ const Services = () => {
                             color: service.color,
                           }}
                         >
-                          Learn More
+                          {service.category === 'Crowdsourced Cybersecurity' 
+                            ? 'Explore Bug Bounty Programs'
+                            : 'View Consulting Services'
+                          }
                         </span>
                         <motion.div
                           animate={{
