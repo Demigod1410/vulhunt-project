@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar = () => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true); // Start mounted for faster render
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -79,8 +79,8 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '/#home' },
-    { name: 'About Us', href: '/aboutus' },
-    { name: 'Services', href: '/services' },
+    { name: 'About Us', href: '/aboutus/' },
+    { name: 'Services', href: '/services/' },
     { name: 'Contact Us', href: '/contact' },
   ];
 
@@ -89,7 +89,10 @@ const Navbar = () => {
       const hash = href.substring(1); // Remove the leading '/'
       return pathname === '/' && activeHash === hash;
     }
-    return pathname === href;
+    // Handle both /contact and /contact/ for static sites
+    const normalizedPathname = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+    const normalizedHref = href.endsWith('/') && href !== '/' ? href.slice(0, -1) : href;
+    return normalizedPathname === normalizedHref;
   };
 
   return (
