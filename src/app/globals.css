@@ -3,6 +3,27 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Critical CSS for LCP optimization */
+@layer base {
+  /* Ensure text is always visible during font load */
+  * {
+    font-display: swap;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Optimize font loading for LCP */
+  h1, h2, h3, h4, h5, h6 {
+    font-display: swap;
+    font-synthesis: none;
+  }
+  
+  /* Prevent layout shift */
+  img, video {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -121,6 +142,26 @@
     /* Force hardware acceleration for smoother animations in Safari */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    /* Optimize for LCP */
+    font-synthesis: none;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Critical content optimization for LCP */
+  #home {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 100vh;
+  }
+  
+  /* Optimize animations for performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
   
   /* Safari-specific fixes for all versions */
