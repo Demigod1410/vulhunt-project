@@ -60,7 +60,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-30 lg:pt-2 transition-colors duration-500" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 md:pt-40 lg:pt-32 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#ffffffff' }}
       aria-label="Hero section"
       role="banner"
