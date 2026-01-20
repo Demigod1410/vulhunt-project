@@ -3,20 +3,9 @@
 import { motion } from 'framer-motion';
 import LogoLoop from './LogoLoop';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useEffect, useState } from 'react';
 
 const Partners = () => {
   const { isDarkMode } = useTheme();
-  const [isLowEnd, setIsLowEnd] = useState(false);
-
-  useEffect(() => {
-    // Simple performance check
-    const start = performance.now();
-    setTimeout(() => {
-      const duration = performance.now() - start;
-      setIsLowEnd(duration > 50); // If setTimeout takes >50ms, likely low-end
-    }, 0);
-  }, []);
 
   const partnerLogos = [
     { src: "/coditing.png", alt: "Coditing", title: "Coditing" },
@@ -59,20 +48,19 @@ const Partners = () => {
         <div className="relative flex justify-center items-center w-full py-12" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
           <LogoLoop
             logos={partnerLogos}
-            speed={isLowEnd ? 60 : 120} // Slower on low-end
+            speed={80}
             direction="left"
-            logoHeight={isLowEnd ? 80 : 120} // Smaller logos on low-end
-            gap={isLowEnd ? 80 : 120} // Smaller gaps on low-end
-            hoverSpeed={0}
-            scaleOnHover={!isLowEnd} // Disable hover effects on low-end
-            fadeOut={false} // Disable fade effects
-            logoClassName={isDarkMode ? 'bg-white/20 p-1 rounded' : ''}
+            logoHeight={120}
+            gap={120}
+            pauseOnHover={false}
+            scaleOnHover={false}
+            fadeOut={false}
             ariaLabel="Partner companies"
           />
         </div>
 
         {/* Bottom Decorative Line */}
-        <motion.div
+        <div
           className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
           style={{
             background: isDarkMode 
@@ -80,10 +68,6 @@ const Partners = () => {
               : 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)',
             opacity: isDarkMode ? 0.5 : 0.6,
           }}
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: isDarkMode ? 0.5 : 0.6 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, ease: 'easeOut' }}
         />
         
       </div>
