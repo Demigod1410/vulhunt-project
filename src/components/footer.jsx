@@ -118,24 +118,23 @@ const Footer = () => {
   ];
 
   const fadeInVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: 'easeOut',
       },
     },
   };
 
   return (
-    <footer className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 pb-8 transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
+    <footer className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 pb-8" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       {/* Static Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle Gradient Glow */}
         <div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 rounded-full"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #cc43fd 0%, transparent 70%)'
@@ -144,7 +143,7 @@ const Footer = () => {
           }}
         />
         <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full"
           style={{
             background: isDarkMode 
               ? 'radial-gradient(circle, #8722ec 0%, transparent 70%)'
@@ -160,13 +159,7 @@ const Footer = () => {
           {/* Left Side - Info Sections */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
             {/* Company Info */}
-            <motion.div
-              className="flex flex-col w-full"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={fadeInVariants}
-            >
+            <div className="flex flex-col w-full">
             <h3
               className="text-2xl font-bold mb-6"
               style={{
@@ -176,7 +169,7 @@ const Footer = () => {
             >
               Vulhunt
             </h3>
-            <p className="mb-6 leading-relaxed text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
+            <p className="mb-6 leading-relaxed text-base" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
               Next-Generation Cybersecurity platform powered by AI-driven technology and crowdsourced security research.
             </p>
 
@@ -185,8 +178,8 @@ const Footer = () => {
               <div className="flex items-start gap-3 group">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ stroke: '#cc43fd' }} />
                 <div>
-                  <p className="text-base font-semibold mb-1 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>Address</p>
-                  <p className="text-base leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
+                  <p className="text-base font-semibold mb-1" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>Address</p>
+                  <p className="text-base leading-relaxed" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
                     Vulhunt,<br />
                     C/O SASOSS, <br /> Workflow Ranka Junction, 3rd Floor,
                     <br /> Near Benniganahalli Metro Station,<br />OMR Road,
@@ -196,43 +189,30 @@ const Footer = () => {
               </div>
               {/* Contact Info */}
               <div className="space-y-3 pt-2">
-                <motion.a
+                <a
                   href="mailto:business@vulhunt.in"
-                  className="flex items-center gap-3 transition-colors duration-500 group"
+                  className="flex items-center gap-3"
                   style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
-                  whileHover={{ x: 5 }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#1a1a2e'}
                 >
                   <Mail className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
                   <span className="text-base">business@vulhunt.in</span>
-                </motion.a>
-                <motion.a
+                </a>
+                <a
                   href="https://www.vulhunt.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 transition-colors duration-500 group"
+                  className="flex items-center gap-3"
                   style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
-                  whileHover={{ x: 5 }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#1a1a2e'}
                 >
                   <Globe className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
                   <span className="text-base">www.vulhunt.com</span>
-                </motion.a>
+                </a>
               </div>
             </div>
-            </motion.div>
+            </div>
 
             {/* Quick Links & Services Combined */}
-            <motion.div
-              className="flex flex-col space-y-8 w-full md:pl-12"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={fadeInVariants}
-              transition={{ delay: 0.2 }}
-            >
+            <div className="flex flex-col space-y-8 w-full md:pl-12">
               {/* Quick Links */}
               <div>
                 <h3
@@ -246,25 +226,15 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-3">
                   {quickLinks.map((link, index) => (
-                    <motion.li
-                      key={index}
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
+                    <li key={index}>
                       <a
                         href={link.href}
-                        className="transition-colors duration-500 text-base flex items-center gap-2 group"
+                        className="text-base flex items-center gap-2"
                         style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#1a1a2e'}
                       >
-                        <ArrowRight
-                          className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                          style={{ stroke: '#cc43fd' }}
-                        />
                         <span>{link.name}</span>
                       </a>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -282,40 +252,23 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-3">
                   {services.map((service, index) => (
-                    <motion.li
-                      key={index}
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
+                    <li key={index}>
                       <a
                         href={service.href}
-                        className="transition-colors duration-500 text-base flex items-center gap-2 group"
+                        className="text-base flex items-center gap-2"
                         style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = isDarkMode ? 'white' : '#8722ec'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#d1d5db' : '#1a1a2e'}
                       >
-                        <ArrowRight
-                          className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                          style={{ stroke: '#cc43fd' }}
-                        />
                         <span>{service.name}</span>
                       </a>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Side - Contact Form */}
-          <motion.div
-            className="flex flex-col w-full"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInVariants}
-            transition={{ delay: 0.4 }}
-          >
+          <div className="flex flex-col w-full">
             <h3
               className="text-2xl font-bold mb-6"
               style={{
@@ -335,19 +288,11 @@ const Footer = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Name"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                       color: isDarkMode ? '#d1d5db' : '#1a1a2e',
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#cc43fd';
-                      e.currentTarget.style.boxShadow = `0 0 0 2px rgba(204, 67, 253, 0.1)`;
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
-                      e.currentTarget.style.boxShadow = 'none';
                     }}
                   />
                 </div>
@@ -359,19 +304,11 @@ const Footer = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                       color: isDarkMode ? '#d1d5db' : '#1a1a2e',
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#cc43fd';
-                      e.currentTarget.style.boxShadow = `0 0 0 2px rgba(204, 67, 253, 0.1)`;
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
-                      e.currentTarget.style.boxShadow = 'none';
                     }}
                   />
                 </div>
@@ -385,19 +322,11 @@ const Footer = () => {
                     value={formData.contactNumber}
                     onChange={handleInputChange}
                     placeholder="Contact Number"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                       color: isDarkMode ? '#d1d5db' : '#1a1a2e',
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#cc43fd';
-                      e.currentTarget.style.boxShadow = `0 0 0 2px rgba(204, 67, 253, 0.1)`;
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
-                      e.currentTarget.style.boxShadow = 'none';
                     }}
                   />
                 </div>
@@ -409,19 +338,11 @@ const Footer = () => {
                     value={formData.company}
                     onChange={handleInputChange}
                     placeholder="Company"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                       color: isDarkMode ? '#d1d5db' : '#1a1a2e',
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#cc43fd';
-                      e.currentTarget.style.boxShadow = `0 0 0 2px rgba(204, 67, 253, 0.1)`;
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
-                      e.currentTarget.style.boxShadow = 'none';
                     }}
                   />
                 </div>
@@ -434,28 +355,18 @@ const Footer = () => {
                   onChange={handleInputChange}
                   placeholder="Tell us about your inquiry or message"
                   rows={6}
-                  className="w-full h-full px-3 py-2.5 rounded-lg text-sm transition-all duration-500 focus:outline-none focus:ring-2 resize-none"
+                  className="w-full h-full px-3 py-2.5 rounded-lg text-sm focus:outline-none resize-none"
                   style={{
                     background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                     border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
                     color: isDarkMode ? '#d1d5db' : '#1a1a2e',
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#cc43fd';
-                    e.currentTarget.style.boxShadow = `0 0 0 2px rgba(204, 67, 253, 0.1)`;
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
-                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 />
               </div>
 
               {/* Status Message */}
               {submitStatus && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                <div
                   className="p-3 rounded-lg text-xs"
                   style={{
                     background: submitStatus.type === 'success' 
@@ -466,66 +377,42 @@ const Footer = () => {
                   }}
                 >
                   {submitStatus.message}
-                </motion.div>
+                </div>
               )}
 
-              <motion.button
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300"
+                className="w-full px-4 py-2 rounded-lg text-sm font-semibold"
                 style={{
                   background: isSubmitting ? '#9ca3af' : '#cc43fd',
                   color: 'white',
                   border: 'none',
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 }}
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                onMouseEnter={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.background = '#d654ff';
-                    e.currentTarget.style.boxShadow = '0 0 20px rgba(204, 67, 253, 0.4)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.background = '#cc43fd';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }
-                }}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
-              </motion.button>
+              </button>
             </form>
 
             
-          </motion.div>
+          </div>
         </div>
 
         {/* Divider */}
-        <motion.div
-          className="w-full h-px mb-8 transition-all duration-500"
+        <div
+          className="w-full h-px mb-8"
           style={{
             background: isDarkMode 
               ? 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.3), rgba(135, 34, 236, 0.3), rgba(214, 84, 255, 0.3), transparent)'
               : 'linear-gradient(90deg, transparent, rgba(204, 67, 253, 0.4), rgba(135, 34, 236, 0.4), rgba(214, 84, 255, 0.4), transparent)',
           }}
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
         />
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Copyright */}
-          <motion.div
-            className="text-center md:text-left transition-colors duration-500"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
+          <div className="text-center md:text-left">
             <p className="text-sm" style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}>
               © All rights reserved by Mahaasenaya Cybertech Venture Pvt. Ltd.
             </p>
@@ -535,50 +422,29 @@ const Footer = () => {
                 href="https://www.sasoss.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors duration-300 text-sm"
+                className="text-sm"
                 style={{ color: isDarkMode ? '#6b7280' : '#7a7a9a' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#cc43fd'}
-                onMouseLeave={(e) => e.currentTarget.style.color = isDarkMode ? '#6b7280' : '#7a7a9a'}
               >
                 SASOSS)
               </a>
             </p>
-          </motion.div>
+          </div>
 
           {/* Social Links */}
-          <motion.div
-            className="flex items-center gap-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
+          <div className="flex items-center gap-4">
             {socialLinks.map((social, index) => {
               const Icon = social.icon;
               return (
-                <motion.a
+                <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-500"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
                   style={{
                     background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'rgba(204, 67, 253, 0.05)',
                     border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
-                    boxShadow: isDarkMode ? 'none' : '0 2px 8px rgba(204, 67, 253, 0.1)',
-                  }}
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#cc43fd';
-                    e.currentTarget.style.boxShadow = `0 0 20px rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`;
-                    e.currentTarget.style.background = 'rgba(204, 67, 253, 0.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = `rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`;
-                    e.currentTarget.style.boxShadow = isDarkMode ? 'none' : '0 2px 8px rgba(204, 67, 253, 0.1)';
-                    e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.03)' : 'rgba(204, 67, 253, 0.05)';
                   }}
                 >
                   {social.isCustom ? (
@@ -586,10 +452,10 @@ const Footer = () => {
                   ) : (
                     <Icon className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
                   )}
-                </motion.a>
+                </a>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </footer>
