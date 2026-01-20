@@ -2,9 +2,10 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
+import Image from 'next/image';
 
 const ANIMATION_CONFIG = {
-  SMOOTH_TAU: 0.25,
+  SMOOTH_TAU: 0.01,
   MIN_COPIES: 2,
   COPY_HEADROOM: 2
 };
@@ -15,22 +16,34 @@ const cx = (...parts) => parts.filter(Boolean).join(' ');
 
 const useResizeObserver = (callback, elements, dependencies) => {
   useEffect(() => {
+    let timeoutId = null;
+    
+    // Debounced callback to reduce recalculations
+    const debouncedCallback = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(callback, 150);
+    };
+
     if (!window.ResizeObserver) {
-      const handleResize = () => callback();
+      const handleResize = () => debouncedCallback();
       window.addEventListener('resize', handleResize);
-      callback();
-      return () => window.removeEventListener('resize', handleResize);
+      callback(); // Initial call without debounce
+      return () => {
+        if (timeoutId) clearTimeout(timeoutId);
+        window.removeEventListener('resize', handleResize);
+      };
     }
 
     const observers = elements.map(ref => {
       if (!ref.current) return null;
-      const observer = new ResizeObserver(callback);
+      const observer = new ResizeObserver(debouncedCallback);
       observer.observe(ref.current);
       return observer;
     });
 
-    callback();
+    callback(); // Initial call without debounce
     return () => {
+      if (timeoutId) clearTimeout(timeoutId);
       observers.forEach(observer => observer?.disconnect());
     };
   }, [callback, elements, dependencies]);
@@ -114,8 +127,8 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
 
       const target = isHovered && hoverSpeed !== undefined ? hoverSpeed : targetVelocity;
 
-      const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
-      velocityRef.current += (target - velocityRef.current) * easingFactor;
+      // Direct velocity assignment for constant smooth movement
+      velocityRef.current = target;
 
       if (seqSize > 0) {
         let nextOffset = offsetRef.current + velocityRef.current * deltaTime;
@@ -299,7 +312,7 @@ export const LogoLoop = memo(({
         {item.node}
       </span>
     ) : (
-      <img
+      <Image
         className={cx(
           'h-[var(--logoloop-itemHeight)] w-auto block object-contain',
           '[-webkit-user-drag:none] pointer-events-none',
@@ -310,15 +323,15 @@ export const LogoLoop = memo(({
           logoClassName
         )}
         src={item.src}
-        srcSet={item.srcSet}
-        sizes={item.sizes}
-        width={item.width}
-        height={item.height}
+        width={item.width || 200}
+        height={item.height || 120}
         alt={item.alt ?? ''}
         title={item.title}
-        loading="lazy"
-        decoding="async"
-        draggable={false} />
+        priority={true}
+        unoptimized={false}
+        draggable={false}
+        style={{ width: 'auto', height: 'var(--logoloop-itemHeight)' }}
+      />
     );
 
     const itemAriaLabel = isNodeItem ? (item.ariaLabel ?? item.title) : (item.alt ?? item.title);
