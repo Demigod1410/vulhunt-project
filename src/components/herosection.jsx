@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
-import { useEffect, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 // Lazy load WebGL component to improve FCP
