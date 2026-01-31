@@ -682,15 +682,6 @@ export default function ServicesPage() {
       {/* Footer */}
       <Footer />
 
-      {/* Bottom Fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none transition-all duration-500"
-        style={{
-          background: isDarkMode 
-            ? 'linear-gradient(to bottom, transparent, #1a0033)'
-            : 'linear-gradient(to bottom, transparent, #f8f9ff)',
-        }}
-      />
     </div>
   );
 }
