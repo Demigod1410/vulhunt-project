@@ -203,7 +203,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Combined Company Info Section - All in one screen */}
-      <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-8 -mt-24">
+      <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-20">
         <div className="relative z-10 max-w-7xl mx-auto w-full space-y-6">
           
           {/* Company Overview */}
@@ -654,16 +654,6 @@ export default function AboutUsPage() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Bottom Fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none transition-all duration-500"
-        style={{
-          background: isDarkMode 
-            ? 'linear-gradient(to bottom, transparent, #1a0033)'
-            : 'linear-gradient(to bottom, transparent, #f8f9ff)',
-        }}
-      />
     </div>
   );
 }
