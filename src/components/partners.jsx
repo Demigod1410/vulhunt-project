@@ -48,7 +48,7 @@ const Partners = () => {
         <div className="relative flex justify-center items-center w-full py-12" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
           <LogoLoop
             logos={partnerLogos}
-            speed={80}
+            speed={150}
             direction="left"
             logoHeight={120}
             gap={120}
