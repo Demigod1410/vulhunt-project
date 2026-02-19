@@ -18,14 +18,14 @@ const Partners = () => {
 
   return (
     <section 
-      className="relative py-6 px-4 sm:px-6 lg:px-8 transition-colors duration-500" 
+      className="relative py-4 sm:py-6 px-3 sm:px-4 md:px-6 lg:px-8 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}
     >
       <div className="w-full">
         {/* Section Title */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-colors duration-500"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 transition-colors duration-500"
             style={{
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               letterSpacing: '-0.02em',
@@ -38,14 +38,14 @@ const Partners = () => {
             </span>
           </h2>
           <p 
-            className="text-lg transition-colors duration-500"
+            className="text-base sm:text-lg transition-colors duration-500"
             style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}
           >
             Trusted by industry leaders worldwide
           </p>
         </div>
 
-        <div className="relative flex justify-center items-center w-full py-12" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
+        <div className="relative flex justify-center items-center w-full py-8 sm:py-10 md:py-12" style={{ willChange: 'transform', backgroundColor: '#f8f6f0' }}>
           <LogoLoop
             logos={partnerLogos}
             speed={150}
@@ -61,7 +61,7 @@ const Partners = () => {
 
         {/* Bottom Decorative Line */}
         <div
-          className="mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+          className="mt-12 sm:mt-14 md:mt-16 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
           style={{
             background: isDarkMode 
               ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
