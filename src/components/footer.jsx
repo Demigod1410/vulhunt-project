@@ -129,7 +129,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20 pb-8" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
+    <footer className="relative overflow-hidden px-3 sm:px-4 md:px-6 lg:px-8 pt-16 sm:pt-20 pb-6 sm:pb-8" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       {/* Static Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Subtle Gradient Glow */}
@@ -155,9 +155,9 @@ const Footer = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-12">
           {/* Left Side - Info Sections */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16">
             {/* Company Info */}
             <div className="flex flex-col w-full">
             <h3
@@ -169,17 +169,17 @@ const Footer = () => {
             >
               Vulhunt
             </h3>
-            <p className="mb-6 leading-relaxed text-base" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
+            <p className="mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
               Next-Generation Cybersecurity platform powered by AI-driven technology and crowdsourced security research.
             </p>
 
             {/* Address */}
-            <div className="space-y-4">
-              <div className="flex items-start gap-3 group">
-                <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ stroke: '#cc43fd' }} />
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-start gap-2 sm:gap-3 group">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" style={{ stroke: '#cc43fd' }} />
                 <div>
-                  <p className="text-base font-semibold mb-1" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>Address</p>
-                  <p className="text-base leading-relaxed" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
+                  <p className="text-sm sm:text-base font-semibold mb-1" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>Address</p>
+                  <p className="text-xs sm:text-sm md:text-base leading-relaxed" style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}>
                     Vulhunt,<br />
                     C/O SASOSS, <br /> Workflow Ranka Junction, 3rd Floor,
                     <br /> Near Benniganahalli Metro Station,<br />OMR Road,
@@ -188,31 +188,31 @@ const Footer = () => {
                 </div>
               </div>
               {/* Contact Info */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-2 sm:space-y-3 pt-2">
                 <a
                   href="mailto:business@vulhunt.in"
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2 sm:gap-3"
                   style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
                 >
-                  <Mail className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
-                  <span className="text-base">business@vulhunt.in</span>
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5" style={{ stroke: '#cc43fd' }} />
+                  <span className="text-sm sm:text-base">business@vulhunt.in</span>
                 </a>
                 <a
                   href="https://www.vulhunt.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2 sm:gap-3"
                   style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
                 >
-                  <Globe className="w-5 h-5" style={{ stroke: '#cc43fd' }} />
-                  <span className="text-base">www.vulhunt.com</span>
+                  <Globe className="w-4 h-4 sm:w-5 sm:h-5" style={{ stroke: '#cc43fd' }} />
+                  <span className="text-sm sm:text-base">www.vulhunt.com</span>
                 </a>
               </div>
             </div>
             </div>
 
             {/* Quick Links & Services Combined */}
-            <div className="flex flex-col space-y-8 w-full md:pl-12">
+            <div className="flex flex-col space-y-6 sm:space-y-8 w-full md:pl-12">
               {/* Quick Links */}
               <div>
                 <h3
@@ -224,12 +224,12 @@ const Footer = () => {
                 >
                   Quick Links
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {quickLinks.map((link, index) => (
                     <li key={index}>
                       <a
                         href={link.href}
-                        className="text-base flex items-center gap-2"
+                        className="text-sm sm:text-base flex items-center gap-2"
                         style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
                       >
                         <span>{link.name}</span>
@@ -255,7 +255,7 @@ const Footer = () => {
                     <li key={index}>
                       <a
                         href={service.href}
-                        className="text-base flex items-center gap-2"
+                        className="text-sm sm:text-base flex items-center gap-2"
                         style={{ color: isDarkMode ? '#d1d5db' : '#1a1a2e' }}
                       >
                         <span>{service.name}</span>
@@ -279,8 +279,8 @@ const Footer = () => {
               Contact Form
             </h3>
             
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full flex-1">
-              <div className="grid grid-cols-2 gap-3 w-full">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-3 sm:space-y-4 w-full flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 w-full">
                 <div className="w-full">
                   <input
                     type="text"
@@ -288,7 +288,7 @@ const Footer = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Name"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
+                    className="w-full px-3 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
@@ -304,7 +304,7 @@ const Footer = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
+                    className="w-full px-3 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
@@ -314,7 +314,7 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 w-full">
                 <div className="w-full">
                   <input
                     type="tel"
@@ -322,7 +322,7 @@ const Footer = () => {
                     value={formData.contactNumber}
                     onChange={handleInputChange}
                     placeholder="Contact Number"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
+                    className="w-full px-3 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
@@ -338,7 +338,7 @@ const Footer = () => {
                     value={formData.company}
                     onChange={handleInputChange}
                     placeholder="Company"
-                    className="w-full px-3 py-2.5 rounded-lg text-sm focus:outline-none"
+                    className="w-full px-3 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm focus:outline-none"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
@@ -354,8 +354,8 @@ const Footer = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Tell us about your inquiry or message"
-                  rows={6}
-                  className="w-full h-full px-3 py-2.5 rounded-lg text-sm focus:outline-none resize-none"
+                  rows={5}
+                  className="w-full h-full px-3 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm focus:outline-none resize-none"
                   style={{
                     background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.05)',
                     border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.3})`,
