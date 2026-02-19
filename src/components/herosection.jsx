@@ -59,7 +59,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-40 sm:pt-44 md:pt-48 lg:pt-44 xl:pt-40 transition-colors duration-500" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 lg:px-8 pt-28 sm:pt-32 md:pt-36 lg:pt-40 xl:pt-40 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#ffffffff' }}
       aria-label="Hero section"
       role="banner"
@@ -106,7 +106,7 @@ const HeroSection = () => {
       >
         {/* Headline */}
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-colors duration-500"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight transition-colors duration-500"
           variants={itemVariants}
           style={{
             fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -130,7 +130,7 @@ const HeroSection = () => {
 
         {/* Subheadline */}
         <motion.p
-          className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed px-4 transition-colors duration-500"
+          className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2 sm:px-4 transition-colors duration-500"
           variants={itemVariants}
           style={{
             fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -141,7 +141,7 @@ const HeroSection = () => {
         </motion.p>
 
         {/* CTA Button */}
-        <motion.div variants={itemVariants} className="mb-16">
+        <motion.div variants={itemVariants} className="mb-12 sm:mb-16">
           <motion.div
             className="inline-block relative"
             whileHover={{ scale: 1.05 }}
@@ -156,7 +156,7 @@ const HeroSection = () => {
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScluoVQP6nvzwVP0PnlXv-1UHOHqJ1HNgS5ElGIBbQ0Nx3sQw/viewform" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                className="relative px-8 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
+                className="relative px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base md:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
                 style={{
                   backgroundColor: '#cc43fd',
                   color: 'white',
@@ -186,7 +186,7 @@ const HeroSection = () => {
 
         {/* Stats Section */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-5xl mx-auto"
           variants={containerVariants}
         >
           {stats.map((stat, index) => (
@@ -194,7 +194,7 @@ const HeroSection = () => {
               key={index}
               variants={statsVariants}
               whileHover={{ scale: 1.05, y: -5 }}
-              className={`relative p-6 rounded-xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+              className={`relative p-4 sm:p-6 rounded-xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
               style={{
                 background: isDarkMode 
                   ? 'rgba(255, 255, 255, 0.03)' 
@@ -234,7 +234,7 @@ const HeroSection = () => {
               
               <div className="relative z-10">
                 <div
-                  className="text-3xl sm:text-4xl font-bold mb-2 transition-all duration-500"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 transition-all duration-500"
                   style={{
                     color: isDarkMode ? '#cc43fd' : '#8722ec',
                   }}
@@ -242,7 +242,7 @@ const HeroSection = () => {
                   {stat.value}
                 </div>
                 <div 
-                  className="text-sm sm:text-base font-medium transition-colors duration-500"
+                  className="text-xs sm:text-sm md:text-base font-medium transition-colors duration-500"
                   style={{
                     color: isDarkMode ? '#9ca3af' : '#5a5a7a',
                   }}
