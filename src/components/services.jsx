@@ -87,7 +87,7 @@ const Services = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       {/* Animated Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Radial Gradient Glow - Static */}
@@ -115,14 +115,14 @@ const Services = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Title */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-14 md:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={titleVariants}
         >
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 transition-colors duration-500"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-500"
             style={{
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               letterSpacing: '-0.02em',
@@ -142,7 +142,7 @@ const Services = () => {
 
         {/* Services Grid */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-14 md:mb-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -155,7 +155,7 @@ const Services = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -8 }}
-                className={`relative p-8 lg:p-10 rounded-2xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+                className={`relative p-6 sm:p-8 lg:p-10 rounded-2xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
                   background: isDarkMode ? 'rgba(255, 255, 255, 0.03)' : '#f5f5f7',
                   border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.2 : 0.4})`,
@@ -192,7 +192,7 @@ const Services = () => {
                   <div className="flex items-start gap-4 mb-4">
                     {/* Icon Container */}
                     <motion.div
-                      className="flex-shrink-0 inline-flex items-center justify-center w-14 h-14 rounded-xl relative mt-1"
+                      className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl relative mt-1"
                       style={{
                         background: isDarkMode 
                           ? 'rgba(255, 255, 255, 0.05)' 
@@ -201,9 +201,8 @@ const Services = () => {
                       }}
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                    >
-                      <Icon
-                        className="w-7 h-7"
+                    >  <Icon
+                        className="w-6 h-6 sm:w-7 sm:h-7"
                         style={{
                           stroke: '#cc43fd',
                         }}
@@ -213,7 +212,7 @@ const Services = () => {
                     <div className="flex-1">
                       {/* Category */}
                       <h3
-                        className="text-2xl sm:text-3xl font-bold mb-8"
+                        className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8"
                         style={{
                           color: service.color,
                           fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -224,7 +223,7 @@ const Services = () => {
 
                       {/* Title */}
                       <p
-                        className="text-lg sm:text-xl leading-relaxed font-medium mb-6 transition-colors duration-500"
+                        className="text-base sm:text-lg md:text-xl leading-relaxed font-medium mb-4 sm:mb-6 transition-colors duration-500"
                         style={{
                           fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                           color: isDarkMode ? '#d1d5db' : '#4a4a6a',
@@ -236,13 +235,13 @@ const Services = () => {
                   </div>
 
                   {/* Arrow Button */}
-                  <div className="ml-[4.5rem]">
+                  <div className="ml-0 sm:ml-[4.5rem] mt-4 sm:mt-0">
                     <Link 
                       href="/services"
                       aria-label={`Learn more about ${service.category}`}
                     >
                       <motion.div
-                        className="inline-flex items-center gap-2 text-white font-semibold group/arrow cursor-pointer"
+                        className="inline-flex items-center gap-2 text-white text-sm sm:text-base font-semibold group/arrow cursor-pointer"
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -317,7 +316,7 @@ const Services = () => {
             <Link href="https://docs.google.com/forms/d/e/1FAIpQLScluoVQP6nvzwVP0PnlXv-1UHOHqJ1HNgS5ElGIBbQ0Nx3sQw/viewform" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                className="relative px-10 py-6 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
+                className="relative px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg font-semibold rounded-xl transition-all duration-300 shadow-xl group"
                 style={{
                   background: '#cc43fd',
                   color: 'white',
