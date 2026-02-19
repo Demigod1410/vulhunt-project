@@ -134,7 +134,7 @@ export default function AboutUsPage() {
     <div className="min-h-screen transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
         <Navbar />
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-12 pt-32">
+      <section className="relative min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 lg:px-8 py-10 sm:py-12 pt-24 sm:pt-28 md:pt-32">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
@@ -165,7 +165,7 @@ export default function AboutUsPage() {
           variants={titleVariants}
         >
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-colors duration-500"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight transition-colors duration-500"
             style={{
               color: isDarkMode ? 'white' : '#1a1a2e',
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -181,13 +181,13 @@ export default function AboutUsPage() {
               Vulhunt
             </span>
           </h1>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+          <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
             Building the future of cybersecurity through innovation, trust, and community
           </p>
 
           {/* Bottom Decorative Line */}
           <motion.div
-            className="mt-8 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
+            className="mt-6 sm:mt-8 mx-auto max-w-md h-1 rounded-full transition-all duration-500"
             style={{
               background: isDarkMode 
                 ? 'linear-gradient(90deg, transparent, #cc43fd, #8722ec, #d654ff, transparent)' 
