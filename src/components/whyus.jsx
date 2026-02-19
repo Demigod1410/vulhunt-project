@@ -93,7 +93,7 @@ const WhyUs = () => {
   return (
     <section 
       id="whyus" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 transition-colors duration-500" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 transition-colors duration-500" 
       style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}
     >
       {/* Animated Background Effects */}
@@ -123,13 +123,13 @@ const WhyUs = () => {
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Title */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-14 md:mb-16"
           initial="hidden"
           animate="visible"
           variants={titleVariants}
         >
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 transition-colors duration-500"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-500"
             style={{
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
               letterSpacing: '-0.02em',
@@ -150,7 +150,7 @@ const WhyUs = () => {
 
         {/* Features Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -162,7 +162,7 @@ const WhyUs = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className={`relative p-8 rounded-2xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
+                className={`relative p-5 sm:p-6 md:p-8 rounded-2xl transition-all duration-500 group cursor-pointer ${isDarkMode ? 'backdrop-blur-sm' : ''}`}
                 style={{
                   background: isDarkMode 
                     ? 'rgba(255, 255, 255, 0.03)' 
@@ -200,10 +200,10 @@ const WhyUs = () => {
                 />
 
                 {/* Content */}
-                <div className="relative z-10 flex items-start gap-6">
+                <div className="relative z-10 flex items-start gap-4 sm:gap-6">
                   {/* Icon Container */}
                   <motion.div
-                    className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center relative transition-all duration-500"
+                    className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center relative transition-all duration-500"
                     style={{
                       background: isDarkMode 
                         ? 'rgba(255, 255, 255, 0.05)' 
@@ -214,7 +214,7 @@ const WhyUs = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <Icon
-                      className="w-8 h-8"
+                      className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
                       style={{
                         stroke: '#cc43fd',
                       }}
@@ -222,9 +222,9 @@ const WhyUs = () => {
                   </motion.div>
 
                   {/* Text */}
-                  <div className="flex-1 pt-1">
+                  <div className="flex-1 pt-0.5 sm:pt-1">
                     <p
-                      className="text-lg sm:text-xl leading-relaxed font-medium transition-colors duration-500"
+                      className="text-base sm:text-lg md:text-xl leading-relaxed font-medium transition-colors duration-500"
                       style={{
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
                         color: isDarkMode ? '#d1d5db' : '#4a4a6a',
