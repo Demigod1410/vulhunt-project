@@ -117,14 +117,14 @@ const Navbar = () => {
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
         maxWidth: '1200px',
-        width: '95%',
+        width: 'calc(100% - 16px)',
       }}
       initial={{ y: -100, x: '-50%' }}
       animate={{ y: visible ? 0 : -100, x: '-50%' }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+      <div className="px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
           {/* Logo */}
           <Link href="/">
             <motion.div
@@ -137,7 +137,7 @@ const Navbar = () => {
               alt="Vulhunt"
               width={120}
               height={60}
-              className="h-10 sm:h-10 w-auto object-contain"
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain"
               priority
             />
             </motion.div>
@@ -328,7 +328,7 @@ const Navbar = () => {
             }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
-            <div className="py-6 px-2">
+            <div className="py-4 px-1 sm:py-6 sm:px-2">
               {navLinks.map((link, index) => (
                 <Link key={index} href={link.href}>
                   <motion.div
