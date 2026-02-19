@@ -78,7 +78,7 @@ export default function ServicesPage() {
     <div className="min-h-screen transition-colors duration-500" style={{ backgroundColor: isDarkMode ? '#1a0033' : '#f8f9ff' }}>
       <Navbar />
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20 pt-32">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden px-3 sm:px-4 md:px-6 lg:px-8 py-16 sm:py-20 pt-24 sm:pt-28 md:pt-32">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -150,7 +150,7 @@ export default function ServicesPage() {
           variants={titleVariants}
         >
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-colors duration-500"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight transition-colors duration-500"
             style={{
               color: isDarkMode ? 'white' : '#1a1a2e',
               fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -166,14 +166,14 @@ export default function ServicesPage() {
               Services
             </span>
           </h1>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+          <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
             Comprehensive cybersecurity solutions tailored to protect your digital infrastructure
           </p>
         </motion.div>
       </section>
 
       {/* Section A: Crowdsourced Cybersecurity Services */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20">
+      <section className="relative px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section Title */}
           <motion.div
@@ -204,7 +204,7 @@ export default function ServicesPage() {
 
           {/* Service 1 & 2: Bug Bounty and VDP */}
           <motion.div
-            className="mb-12"
+            className="mb-8 sm:mb-10 md:mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -227,9 +227,9 @@ export default function ServicesPage() {
                 }}
               />
 
-              <div className="relative z-10 space-y-12">
+              <div className="relative z-10 space-y-8 sm:space-y-10 md:space-y-12">
                 {/* Service 1: Bug Bounty */}
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                   <motion.div
                     className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
@@ -239,7 +239,7 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Target className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
+                    <Target className="w-8 h-8 sm:w-10 sm:h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
@@ -252,19 +252,19 @@ export default function ServicesPage() {
                     >
                       1. Bug Bounty Managed Services
                     </h3>
-                    <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Vulhunt's bug bounty programs are results-oriented security testing initiatives. These programs are best suited for organizations preferring to provide financial rewards to security researchers for discovering quality vulnerabilities. The clients are charged only for the vulnerabilities reported as per the agreed price for severity.
                     </p>
-                    <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       <span className="font-bold transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>Pricing Example:</span> P5 (Low Severity) – $25 × 5 vulnerabilities = <span className="font-bold transition-colors duration-500" style={{ color: isDarkMode ? 'white' : '#1a1a2e' }}>$125</span>
                     </p>
 
                     {/* Key Benefit */}
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 mt-1" style={{ stroke: '#cc43fd' }} />
                       <div>
-                        <p className="text-sm font-semibold mb-1 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#5a5a7a' }}>Key Benefit:</p>
-                        <p className="text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                        <p className="text-xs sm:text-sm font-semibold mb-1 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#5a5a7a' }}>Key Benefit:</p>
+                        <p className="text-sm sm:text-base transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                           Clients pay only for verified vulnerabilities, ensuring cost-effectiveness.
                         </p>
                       </div>
@@ -283,9 +283,9 @@ export default function ServicesPage() {
                 />
 
                 {/* Service 2: VDP */}
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
+                    className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
@@ -293,12 +293,12 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Award className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
+                    <Award className="w-8 h-8 sm:w-10 sm:h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
                     <h3
-                      className="text-2xl sm:text-3xl font-bold mb-4"
+                      className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4"
                       style={{
                         color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
@@ -306,10 +306,10 @@ export default function ServicesPage() {
                     >
                       2. Vulnerability Disclosure Programs (VDP)
                     </h3>
-                    <p className="text-base sm:text-lg leading-relaxed mb-4 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4 transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       VDP offers a budget-controlled alternative to traditional bug bounty programs. Security researchers are rewarded with non-monetary rewards such as T-shirts, laptop bags, or recognition.
                     </p>
-                    <p className="text-base sm:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed transition-colors duration-500" style={{ color: isDarkMode ? '#d1d5db' : '#4a4a6a' }}>
                       Vulhunt charges a standard monthly fee, with no hidden costs.
                     </p>
                   </div>
@@ -333,7 +333,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Section B: Traditional Cybersecurity Services */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20">
+      <section className="relative px-3 sm:px-4 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section Title */}
           <motion.div
@@ -387,11 +387,11 @@ export default function ServicesPage() {
                 }}
               />
 
-              <div className="relative z-10 space-y-12">
-                {/* Service 1: Cybersecurity Consulting */}
-                <div className="flex items-start gap-6">
+              <div className="relative z-10 space-y-8 sm:space-y-10 md:space-y-12">
+                {/* Service 1: Bug Bounty */}
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                   <motion.div
-                    className="flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
+                    className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center relative transition-all duration-500"
                     style={{
                       background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(204, 67, 253, 0.08)',
                       border: `1px solid rgba(204, 67, 253, ${isDarkMode ? 0.3 : 0.4})`,
@@ -399,12 +399,12 @@ export default function ServicesPage() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Shield className="w-10 h-10" style={{ stroke: '#cc43fd' }} />
+                    <Target className="w-8 h-8 sm:w-10 sm:h-10" style={{ stroke: '#cc43fd' }} />
                   </motion.div>
 
                   <div className="flex-1">
                     <h3
-                      className="text-2xl sm:text-3xl font-bold mb-4"
+                      className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4"
                       style={{
                         color: '#cc43fd',
                         fontFamily: 'var(--font-sans), system-ui, -apple-system, sans-serif',
